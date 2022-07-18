@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+
+<div class="error-content">
+    <div class="error-content-inner">
+        <i class="error-icon material-icons">error_outline</i>
+        <div class="error-text">{{ error }}</div>
+    </div>
+</div>
+{% endblock %}

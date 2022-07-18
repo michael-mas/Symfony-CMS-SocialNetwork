@@ -1,0 +1,136 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ pages.title }}
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/pages.css') }}">
+{% endblock %} 
+
+
+{% block body %}
+
+{% if pages.status == 0 %}
+
+<div class="box">
+    <header 
+    style="
+    background-image: url('{{asset('page_image/' ~ pages.images)}}');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 900px;
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    "
+    class="hero">
+    </header>
+    <article>
+    <h1>{% include 'multiverse/fragment/button_back.html.twig' %}
+    {{ pages.title }}
+    <span class="byline">
+    <p class="byline">
+    Catégorie : 
+    {{ pages.categories }}
+    </p>
+    </span> 
+    <p class="byline2">
+    Par : {{ app.user.username }}
+    </p>
+    </h1>
+
+    <div class="box-main">
+
+    <p>{{ pages.content }}</p>
+    <div>{{ pages.widgets.content|replace({'"':'\''})|raw }} </div>
+    <div>{{ pages.widgets.content2|replace({'"':'\''})|raw }} </div>
+
+    </div>
+    <div style="height:50vh;"></div>
+    </article>
+</div>
+
+{% elseif pages.status == 1 %}
+
+<div class= 'containerV'>
+<div class="container_content">
+<div class="container_content_inner">
+<div class="title">
+  <h1 class="h1">{{ pages.title }}</h1>
+</div>
+<div class="par">
+<p class="p">
+Catégorie : {{ pages.categories }}
+</p class="p">
+</div>
+<div class="btns">
+<p class='btns_more'>Créer par : {{ app.user.username }} </p>
+</div>
+</div>
+</div>
+ <div class="container_outer_img">
+ <div class="img-inner">
+ <img src='{{asset('page_image/' ~ pages.images)}}'  alt="" class="container_img"/>
+       </div>
+     </div>
+  </div>
+<div class="overlay"></div>
+<div class= 'containerY'>
+    <p>{{ pages.content }}</p>
+    <div>{{ pages.widgets.content|replace({'"':'\''})|raw }} </div>
+</div>
+
+<div class= 'containerX'>
+    <p>{{ pages.content2 }}</p>
+    {{ pages.widgets.content2|replace({'"':'\''})|raw }} 
+</div>
+
+{% elseif pages.status == 2 %}
+
+<div class="body" >
+  <h1 class="name">
+	<span class="copy-wrap">
+		{{ app.user.username }}
+  	</span>
+</h1>
+
+<div class="square"></div>
+
+<div class="card">
+	<div class="card-title-wrap">
+		<h1 class="title">
+			<span style="color:white;" class="copy-wrap">
+				{{ pages.title }}
+			</span>
+		</h1>	
+		<button class="btn hide">
+			Voir
+		</button>
+	</div>
+	<div class="card-img" style="background-image: url('{{asset('page_image/' ~ pages.images)}}');"></div>
+</div>
+
+<h2 class="catogarize">
+	<span class="copy-wrap">
+    	Categorie: {{ pages.categories }}
+	</span>
+</h2>
+
+<div class= 'container-template3-Z'>
+  <p>{{ pages.content }}</p>
+  <div>{{ pages.widgets.content|replace({'"':'\''})|raw }} </div>
+</div>
+
+<div class= 'container-template3-Y'>
+  <p>{{ pages.content2 }}</p>
+  <div>{{ pages.widgets.content2|replace({'"':'\''})|raw }} </div>
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+<script src="{{ asset('js/universe/pages.js') }}"></script>
+{% endif %}
+
+{% endblock %}
+

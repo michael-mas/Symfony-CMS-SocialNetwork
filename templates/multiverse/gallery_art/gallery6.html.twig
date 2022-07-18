@@ -1,0 +1,30 @@
+
+
+<title>{% block title %}Multivers_Gallery6{% endblock %}</title>
+{% block stylesheets %}
+ 
+<link rel="stylesheet" href="{{ asset('css/univers/gallery6.css') }}">
+
+
+{% endblock %}
+
+{% block body %}
+
+
+<div id="world"/>
+
+<div id="credits">
+  <p><a href="{{ path('art_multiverse') }}">Revenir au MultiVerse</a></p>
+</div>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/264161/OrbitControls.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/264161/Cat.js"></script>
+<script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-92f72b57-e174-4935-b884-4a0aae715c9d" crossorigin=""></script>
+<script src="{{ asset('js/universe/gallery6.js') }}"></script>
+
+{% endblock %}
+

@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% if isOwner %}Amis{% else %}{{ name }}{% endif %} | Portal{% endblock %}
+
+{% block body %}
+<div class="user-friends" uid="{{ uid }}" name="{{ name }}" isOwner="{{ isOwner }}">
+    <div class="user-friends-header">
+        <div class="user-info">
+            <div class="user-info-pfp">
+                <img src="{{ pfp }}" alt="{{ name }}">
+            </div>
+            <div class="user-info-name">{{ name }}</div>
+        </div>
+    </div>
+    <div class="user-friends-body">
+        <div class="user-friends-menu">
+            <div class="user-friends-menu-item active" data-type="friends">Amis</div>
+            {% if isOwner %}
+                <div class="user-friends-menu-item" data-type="requests">Demandes</div>
+                <div class="user-friends-menu-item" data-type="invites">Invitations</div>
+                <div class="user-friends-menu-item" data-type="blocked">Bloqué</div>
+            {% endif %}
+        </div>
+        <div class="user-friends-content">
+            <div class="user-friends-content-title">Amis</div>
+            <div class="user-friends-content-list">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var uid="{{ uid }}";
+
+    $(document).ready(function() {
+        function getFriends() {
+            $.ajax({
+                url: "{{ path('api_friends') }}/"+uid,
+                type: "GET"
+            }).done(function(data) {
+                $(".user-friends-content-title").html("Amis");
+                $("title").html("Friends | Portal");
+                data.forEach(function(friend) {
+                    $(".user-friends-content-list").append(`
+                        <div class="profile-friend${friend.isBlocked ? ` blocked` : ``}" uid="${friend.id}" name="${friend.username}">
+                            <div class="profile-friend-pfp">
+                                <img src="${friend.pfp}" alt="${friend.username}">
+                            </div>
+                            <div class="profile-friend-name">${friend.username}</div>
+                        </div>
+                    `);
+                });
+            }).fail(function(data) {
+                console.log(data);
+            });
+        } getFriends();
+
+        function getRequests() {
+            $.ajax({
+                url: "{{ path('api_requests') }}/"+uid,
+                type: "GET"
+            }).done(function(data) {
+                $(".user-friends-content-title").html("Demandes");
+                $("title").html("Requests | Portal");
+                data.forEach(function(friend) {
+                    $(".user-friends-content-list").append(`
+                        <div class="profile-friend" uid="${friend.id}" name="${friend.username}">
+                            <div class="profile-friend-pfp">
+                                <img src="${friend.pfp}" alt="${friend.username}">
+                            </div>
+                            <div class="profile-friend-name">${friend.username}</div>
+                        </div>
+                    `);
+                });
+            }).fail(function(data) {
+                console.log(data);
+            });
+        }
+
+        function getInvites() {
+            $.ajax({
+                url: "{{ path('api_pending') }}/"+uid,
+                type: "GET"
+            }).done(function(data) {
+                $(".user-friends-content-title").html("Invitations");
+                $("title").html("Invites | Portal");
+                data.forEach(function(friend) {
+                    $(".user-friends-content-list").append(`
+                        <div class="profile-friend" uid="${friend.id}" name="${friend.username}">
+                            <div class="profile-friend-pfp">
+                                <img src="${friend.pfp}" alt="${friend.username}">
+                            </div>
+                            <div class="profile-friend-name">${friend.username}</div>
+                        </div>
+                    `);
+                });
+            }).fail(function(data) {
+                console.log(data);
+            });
+        }
+
+        function getBlocked() {
+            $.ajax({
+                url: "{{ path('api_blocked') }}/"+uid,
+                type: "GET"
+            }).done(function(data) {
+                $(".user-friends-content-title").html("Bloqué");
+                $("title").html("Blocked | Portal");
+                data.forEach(function(friend) {
+                    $(".user-friends-content-list").append(`
+                        <div class="profile-friend" uid="${friend.id}" name="${friend.username}">
+                            <div class="profile-friend-pfp">
+                                <img src="${friend.pfp}" alt="${friend.username}">
+                            </div>
+                            <div class="profile-friend-name">${friend.username}</div>
+                        </div>
+                    `);
+                });
+            }).fail(function(data) {
+                console.log(data);
+            });
+        }
+
+        $(".user-friends-menu-item").click(function() {
+            $(".user-friends-menu-item").removeClass("active");
+            $(this).addClass("active");
+            type = $(this).attr("data-type");
+            $(".user-friends-content-list").html("");
+            if(type == "friends") {
+                getFriends();
+            } else if(type == "requests") {
+                getRequests();
+            } else if(type == "invites") {
+                getInvites();
+            } else if(type == "blocked") {
+                getBlocked();
+            }
+        });
+
+        $(".user-friends-content-list").on("click", ".profile-friend", function() {
+            sUid = $(this).attr("uid");
+            window.location.href = "{{ path('user_show') }}/"+sUid;
+        });
+
+        $(".user-info").click(function() {
+            window.location.href = "{{ path('user_show') }}/" + uid;
+        });
+
+    });
+
+</script>
+
+{% endblock %}

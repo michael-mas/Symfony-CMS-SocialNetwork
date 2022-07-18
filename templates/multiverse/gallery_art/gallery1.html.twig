@@ -1,0 +1,119 @@
+
+
+<title>{% block title %}Multivers_Art{% endblock %}</title>
+{% block stylesheets %}
+ 
+<link rel="stylesheet" href="{{ asset('css/univers/gallery1.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+<input type="checkbox" id="lightswitch" accesskey="l" />
+<input type="checkbox" checked="checked" id="wall4" accesskey="x" />
+
+<label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label>
+<label class="p1hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/dBYWWZ" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label class="p1hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/dBYWWZ" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label class="p1hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/dBYWWZ" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label></label>
+<label class="p2hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/xxGYWQG" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label class="p2hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/xxGYWQG" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label class="p2hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/xxGYWQG" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label></label>
+<label class="p3hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label class="p3hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label class="p3hover pointer" title="clique pour zoomer - double clique pour voir le code">
+  <a href="https://codepen.io/ivorjetski/pen/xMJoYO" target="_blank"></a>
+  <label class="pointer"></label>
+</label>
+<label class="pointer turn" for="wall4" title="Tourner à droite"></label>
+<label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label><label></label>
+
+<z>
+  <x>
+    <y>
+      <floor></floor>
+      <ceiling></ceiling>
+      <wall1>
+        <painting>
+          <img src="https://tinydesign.co.uk/gallery/gallery-img/portrait.jpg" />
+          <p>
+            Portrait en CSS pur<br />
+            Enfant<br />
+            <small>Ben Evans</small>
+          </p>
+        </painting>
+      </wall1>
+      <wall2>
+        <painting>
+          <img src="https://tinydesign.co.uk/gallery/gallery-img/landscape.jpg" />
+          <p>
+            Paysage en CSS pur <br />
+            Une soirée à Southwold<br />
+            <small>Ben Evans</small>
+          </p>
+        </painting>
+      </wall2>
+      <wall3>
+        <painting>
+          <img src="https://tinydesign.co.uk/gallery/gallery-img/still-life.jpg" />
+          <p>
+            Nature morte en CSS pure<br />
+           Eau et citron<br />
+            <small>Ben Evans</small>
+          </p>
+        </painting>
+      </wall3>
+      <wall4>
+
+        <notice>
+
+          <a title=" CSS Art !" target="_blank" href="https://www.redbubble.com/i/canvas-print/Pure-CSS-Landscape-An-Evening-in-Southwold-by-Ivorjetski/48823594.4ZB30">Voir le paysage</a>
+          <a title="CSS Art!" target="_blank" href="https://www.redbubble.com/i/canvas-print/Pure-CSS-Still-Life-Water-and-Lemons-by-Ivorjetski/48862524.4ZB30">Voir la nature morte</a>
+          <a title="CSS Art!" target="_blank" href="https://www.redbubble.com/i/framed-print/Pure-CSS-Portrait-Isla-by-Ivorjetski/48862324.16RW4">Voir le portrait</a>
+        </notice>
+        <door>
+          <a title="Revenir à MetaVerse" href="{{ path('art_multiverse') }}">
+          </a>
+        </door>
+
+        <label for="lightswitch" class="pointer" title="Eteindre/allumer"></label>
+        <fireexit>
+          <i></i>
+          <i></i>
+        </fireexit>
+      </wall4>
+    </y>
+  </x>
+</z>
+
+<label class="turnback" title="Tourner à gauche" for="wall4"></label>
+
+
+{% endblock %}
+

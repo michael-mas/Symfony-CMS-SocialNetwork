@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+        <title>{% block title %}Bienvenue!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('images/faviconlogo-multiverse.png') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {# Use `./vendor/bin/webpack-encore production` to build the static assets #}
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        <script src="{{ asset('build/app.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js" integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js" integrity="sha512-SYfDUYPg5xspsG6OOpXU366G8SZsdHOhqk/icdrYJ2E/WKZxPxze7d2HD3AyXpT7U22PZ5y74xRpqZ6A2bJ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it-emoji/2.0.2/markdown-it-emoji.min.js" integrity="sha512-tJ1QQaPYuPI8KC68gOLzHsp8l2hZB08FHzALKpjaGt+3I6x9ZaDzxdL67NKfliSg60yTq1dd7Kfor5rNjRbE0g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js" integrity="sha512-yUUc0qWm2rhM7X0EFe82LNnv2moqArj5nro/w1bi05A09hRVeIZbN6jlMoyu0+4I/Bu4Ck/85JQIU82T82M28w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/github-dark.min.css" integrity="sha512-rO+olRTkcf304DQBxSWxln8JXCzTHlKnIdnMUwYvQa9/Jd4cQaNkItIUj6Z4nvW1dqK0SKXLbn9h4KwZTNtAyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script>
+            var md = window.markdownit({
+                breaks: true,
+                linkify: true,
+                highlight: function (str, lang) {
+                    if (lang && hljs.getLanguage(lang)) {
+                        try {
+                            return hljs.highlight(str, { language: lang }).value;
+                        } catch (__) {}
+                    }
+                    return '';
+                }
+            }).use(window.markdownitEmoji);
+        </script>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a href="{{ path('app_home') }}" class="nav-logo">
+                        <img src="{{ asset('images/logo_multiverse2.png') }}" alt="Logo" class="normal">
+                        <img src="{{ asset('images/faviconlogo-multiverse.png') }}" alt="Logo" class="mini">
+                    </a>
+
+                    <div class="nav-search">
+                        <form action="{{ path('app_search') }}" method="get">
+                            <div class="search-icon">
+                                <i class="material-icons">search</i>
+                            </div>
+                            <div class="search-input">
+                                <input name="q" type="text" placeholder="Rechercher">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="nav-list">
+                        <a class="search-toggler material-icons">search</a>
+                        <a title="Accueil" href="{{ path('app_home') }}" class="material-icons">home</a>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <a title="Coin administration" href="{{ path('panel_admin') }}" class="material-icons">settings</a>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <a title="Créer publication" href="{{ path('post_new') }}" class="material-icons">add</a>
+                            <a title="Notifications" id="nav-notif-toggler" class="material-icons">notifications_none</a>
+                            <a title="Messages" id="nav-msg-toggler" class="material-icons">chat</a>
+                            <a title="Rejoindre un multivers" href="{{ path('app_multiverse') }}" class="material-icons">group_work</a>
+                            <div id="nav-user-toggler">
+                                <img src="{{ app.user.pfp }}" alt="{{ app.user.username }}">
+                                <span>{{ app.user.username }}</span>
+                                <i class="material-icons">expand_more</i>
+                            </div>
+                        {% else %}
+                            <a href="{{ path('app_login') }}" class="material-icons">login</a>
+                        {% endif %}
+                    </div>
+
+                    {% if app.user %}
+                        <div class="nav-user-notifs">
+                            Pas de nouvelles notifications
+                        </div>
+
+                        <div class="messenger hidden">
+                            <div class="messenger-userlist"></div>
+
+                            <div class="messenger-chat disabled" uid="0">
+                                <div class="messenger-header">
+                                    <div class="messenger-header-title">Chat Multiverse</div>
+                                    <div class="messenger-header-close material-icons">X</div>
+                                </div>
+
+                                <div class="messenger-body">
+                                    <div class="messenger-body-messages"></div>
+                                </div>
+
+                                <div class="messenger-new-message">
+                                    <input class="messenger-msg-input" name="message" type="text" placeholder="Ecris un message...">
+                                    <div class="messenger-msg-btn"><span class="material-icons">send</span></div>
+                                </div>
+                            </div>
+
+                            <div class="friend-name-preview hidden">
+                                <div class="fnp-name"></div>
+                                <div class="fnp-arrow"></div>
+                            </div>
+                        </div>
+                        <script src="{{ asset('js/messenger.js') }}"></script>
+
+                        <script>
+                            $(document).ready(function() {
+                                let uid = "{{ app.user.id }}";
+                                var nfReqs = [];
+
+                                function getNotifs() {
+                                    $.ajax({
+                                        url: "{{ path('api_requests') }}/"+uid,
+                                        type: "GET"
+                                    }).done(function(data) {
+                                        nfReqs = data;
+                                        let nfCount = nfReqs.length;
+
+                                        if(nfCount<=0){
+                                            $("#nav-notif-toggler").html("notifications_none");
+                                            return;
+                                        }
+
+                                        $("#nav-notif-toggler").html("notifications");
+
+                                        let nfHtml = "";
+
+                                        nfReqs.forEach(function(nf) {
+                                            nfHtml += `
+                                                <div class="notif-entry" uid="${nf.id}">
+                                                    <div class="entry-pfp">
+                                                        <img src="${nf.pfp}" alt="${nf.username}">
+                                                    </div>
+                                                    <div class="entry-name">${nf.username}</div>
+                                                </div>
+                                            `;
+                                        });
+
+                                        let nfRequests = `
+                                            <div class="notif-requests">
+                                                <div class="notif-title">Requêtes</div>
+                                                <div class="notif-list">
+                                                    ${nfHtml}
+                                                </div>
+                                            </div>
+                                        `;
+
+                                        $(".nav-user-notifs").html(nfRequests);
+                                    });
+                                } getNotifs();
+
+                                //toggle notifications
+                                $("#nav-notif-toggler").click(function() {
+                                    $(".nav-user-notifs").toggleClass("active");
+                                });
+
+                                //click outside of notifications or toggler to close
+                                $(document).click(function(e) {
+                                    if(!$(e.target).closest(".nav-user-notifs").length && !$(e.target).closest("#nav-notif-toggler").length) {
+                                        $(".nav-user-notifs").removeClass("active");
+                                    }
+                                });
+
+                                //open notif profile
+                                $(".nav-user-notifs").on("click", ".notif-entry", function() {
+                                    let uid = $(this).attr("uid");
+                                    window.location.href = "{{ path('user_show') }}/"+uid;
+                                });
+                            });
+                        </script>
+
+                        <div class="nav-user-menu">
+                            <div class="nav-user-menu-inner">
+                                <div class="menu-section">
+                                    <a class="profile" href="{{ path('user_show') }}">
+                                        <span class="menu-entry-icon material-icons">account_circle</span>
+                                        <span class="menu-entry-text">Profil</span>
+                                    </a>
+                                    <a class="friends" href="{{ path('user_friends') }}">
+                                        <span class="menu-entry-icon material-icons">people</span>
+                                        <span class="menu-entry-text">Amis</span>
+                                    </a>
+                                </div>
+                                <div class="menu-section">
+                                    <a class="edit-profile" href="{{ path('user_edit') }}">
+                                        <span class="menu-entry-icon material-icons">manage_accounts</span>
+                                        <span class="menu-entry-text">Editer</span>
+                                    </a>
+                                </div>
+                                <div class="menu-section">
+                                    <a class="logout" href="{{ path('app_logout') }}">
+                                        <span class="menu-entry-icon material-icons">logout</span>
+                                        <span class="menu-entry-text">Déco</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <script>
+                $(document).ready(function() {
+                    //toggle menu
+                    $('#nav-user-toggler').click(function() {
+                        $('.nav-user-menu').toggleClass('active');
+                    });
+
+                    // hide nav-list on search-toggler click
+                    $('.nav-list .search-toggler').click(function() {
+                        $('.nav-list').toggleClass('hidden');
+                        $('.nav-search').toggleClass('active');
+                    });
+                    
+                    $(document).click(function(event) {
+                        //hide menu if is active and user clicked outside of menu and toggler
+                        if ($('.nav-user-menu').hasClass('active') && !$(event.target).closest('.nav-user-menu').length && !$(event.target).closest('#nav-user-toggler').length) {
+                            $('.nav-user-menu').removeClass('active');
+                        }
+                        // show nav-list if hidden and user clicked outside of nav-search and toggler
+                        if ($('.nav-list').hasClass('hidden') && !$(event.target).closest('.nav-search').length && !$(event.target).closest('.nav-list').length) {
+                            $('.nav-list').removeClass('hidden');
+                            $('.nav-search').removeClass('active');
+                        }
+                    });
+
+                    // submit search form only if query is not empty
+                    $('.nav-search form').submit(function(e) {
+                        if($('.nav-search .search-input input').val().length < 1) {
+                            e.preventDefault();
+                        }
+                    });
+
+                    // submit search form on icon click
+                    $('.nav-search .search-icon').click(function() {
+                        $('.nav-search form').submit();
+                    });
+                });
+            </script>
+        </div>
+        {% block body %}{% endblock %}
+        <style>
+            .footer{
+                background-color:#1a1b1c;
+                position: fixed;
+                width:100%;
+                bottom:0;
+                display:flex;
+                justify-content:space-between;
+                padding-left:4%;
+                padding-right:4%;
+                z-index: 10;
+            }
+        </style>
+        <footer class="footer">
+            <p>WebLabPrototype © 2022</p>
+            <p style="margin-right:2%"> <a class="profile" href="{{ path('mentions.rgpd') }}">Mentions légales</a></p>
+            <p><a class="profile" href="{{ path('contact.rgpd') }}">Me contacter</a></p>
+        </footer>
+    </body>
+</html>

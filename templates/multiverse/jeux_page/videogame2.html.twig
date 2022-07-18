@@ -1,0 +1,122 @@
+
+
+<title>{% block title %}Multivers_Jeux2{% endblock %}</title>
+
+{% block stylesheets %}
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700,900'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+<link rel="stylesheet" href="{{ asset('css/univers/game2.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="splash"></div>
+<div class="container">
+            <div class="start-game game-full-flex" id="start-game">
+                
+                <div class="start-game-top"><a class="play-full-page" href="#"  target="_blank">Mode plein écran</a></div>    
+
+                <div class="logo-holder">
+                    <p class="logo">
+                        <span>C</span>
+                        <span>o</span>
+                        <span>l</span>
+                        <span>o</span>
+                        <span>r</span>
+                        <span>o</span>
+                        <span>n</span>
+                    </p>
+                    <a class="btnReturn"  href="{{ path('jeuxvideo_multiverse') }}">MetaVerse</a>
+                    <a class="play-button" href="#" onclick="game.start()">Jouer</a>
+                    <h4 class="hint">Indice: <span>rouge</span> est toujours la prmière couleur</h4>
+                </div>
+
+                <div class="how-to-play">
+                    <div class="section section-1">
+                        <h4>Quand la balle rebondit<br>elle change de couleur</h4>
+                        <div class="content">
+                            <div class="ball-demo" id="ball-demo"></div>
+                        </div>
+                    </div>
+                    <div class="section section-2">
+                        <h4>Clique sur les collones pour les faire changer de couleur<br>(Red, Yellow, Purple)</h4>
+                        <div class="content">
+                            <div class="bar bar-1" data-index="0"></div>
+                            <div class="bar bar-2"></div>
+                            <div class="bar bar-3"></div>
+                        </div>
+                    </div>
+                    <div class="section section-3">
+                        <h4>La couleur de la balle et des colonnes<br>doivent toujours être la même</h4>
+                        <div class="content">
+                            <div class="ball-demo" id="ball-demo"></div>
+                            <div class="bar bar-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="stop-game game-full-flex">
+                <a class="btnReturn"  href="{{ path('jeuxvideo_multiverse') }}">MetaVerse</a>
+                <div class="score-container">
+                    
+                    <h1>Coloron</h1>
+
+                    <div class="final-score"></div>
+                    <div class="result"></div>
+                    
+                    <h4>Tweet pour challenger tes amis</h4>
+
+                    <p>
+                        <a class="tweet" href="#" onclick="game.generateTweet()">
+                            <i class="fa fa-twitter" aria-hidden="true"></i> Tweet
+                        </a>
+                    </p>
+
+                    <div>
+                        <a class="play-again" href="#" onclick="game.start()">Jouer encore</a>
+                        <a class="main-menu" href="#" onclick="game.intro()">Menu</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="small-glows"></div>
+
+            <div class="glow"><div class="sun"></div></div>
+
+            <div class="waves">
+                <div class="top_wave"></div>
+                <div class="wave1"></div>
+                <div class="wave2"></div>
+                <div class="wave3"></div>
+                <div class="wave4"></div>
+            </div>
+
+            <div class="mounts">
+                <div class="mount1"></div>
+                <div class="mount2"></div>
+            </div>
+
+            <div class="clouds"></div>
+
+            <div class="scene">
+                <div class="learn-to-play">Clique sur les collones pour les faire changer de couleur</div>
+                <div class="score" id="score"></div>
+                <div class="ball-holder"></div>
+                <div class="sticks" id="sticks"></div>
+            </div>
+
+            <div class="noise"></div>
+
+        </div>
+
+<script src='https://code.jquery.com/jquery-3.1.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+<script src="{{ asset('js/universe/game2.js') }}"></script>
+{% endblock %}
+

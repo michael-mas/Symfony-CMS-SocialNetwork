@@ -1,0 +1,309 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_JeuxVideo{% endblock %}
+
+{% block stylesheets %}
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ asset('css/univers/jeuxvideo.css') }}">
+
+{% endblock %}
+
+{% block body %}
+<h1>Jeux vidéos</h1>
+<hr style="width:90%; background-color:white;">
+
+<h2>Créations de nos membres</h2>
+<hr style="width:70%; background-color:white;">
+
+<h2>Jeux en vedette</h2>
+<h5>Kapla Tridimensionel</h5>
+<div id="container">
+	<div id="game"></div>
+	<div id="score">0</div>
+	<div id="instructions">Clique (ou appuyes sur la barre d'espacement) pour placer le bloc</div>
+	<div class="game-over">
+		<h2>Partie terminée</h2>
+		<p>Tu as été super, tu es le meilleur !</p>
+		<p>Clique ou appuyes sur la barre d'espace pour recommencer</p>
+	</div>
+	<div class="game-ready">
+		<div id="start-button">Commencer</div>
+		<div></div>
+	</div>
+</div>
+
+
+
+<h2>Derniers jeux créés</h2>
+
+
+
+<div class="content-wrapper">
+  
+  <div class="news-card">
+    <a class="news-card__card-link"></a>
+    <img src="{{ asset('images/multiverse/jeux/jeuxvideos/imagejeu.jpg') }}" alt="" class="news-card__image">
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">SpaceShip Discover</h2>
+      <div class="news-card__post-date">29 Janvier, 2022</div>
+      <div class="news-card__details-wrapper">
+        <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio, pariatur&hellip;</p>
+        <a href="{{ path('videogame1_multiverse') }}" class="news-card__read-more">Jouer <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <a class="news-card__card-link"></a>
+    <img src="{{ asset('images/multiverse/jeux/jeuxvideos/gamos.PNG') }}" alt="" class="news-card__image">
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">Petit BonhommeDeChemin</h2>
+      <div class="news-card__post-date">24 Décembre, 2018</div>
+      <div class="news-card__details-wrapper">
+        <p class="news-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam obcaecati ex natus nulla rem sequi laborum quod fugit&hellip;</p>
+        <a href="https://michael-mas.github.io/JavaScript/PtitBonhommeDchemin/" class="news-card__read-more">Jouer <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <a class="news-card__card-link"></a>
+    <img src="{{ asset('images/multiverse/jeux/jeuxvideos/coloron.jpg') }}" alt="" class="news-card__image">
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">ColoRon</h2>
+      <div class="news-card__post-date">5 Juin, 2019</div>
+      <div class="news-card__details-wrapper">
+        <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae&hellip;</p>
+        <a href="{{ path('videogame2_multiverse') }}" class="news-card__read-more">Jouer <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <a class="news-card__card-link"></a>
+    <img width="100%" src="{{ asset('images/multiverse/jeux/jeuxvideos/jeux3.jpg') }}" alt="" class="news-card__image">
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">Ho my Rabbit !</h2>
+      <div class="news-card__post-date">13 Février, 2022</div>
+      <div class="news-card__details-wrapper">
+        <p class="news-card__excerpt">Lorem ipsum dolor sit amet!</p>
+        <a href="{{ path('videogame3_multiverse') }}" class="news-card__read-more">Jouer <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <a class="news-card__card-link"></a>
+    <img src="{{ asset('images/multiverse/jeux/jeuxvideos/jeux4.jpg') }}" alt="" class="news-card__image">
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">Rubiks-ECube</h2>
+      <div class="news-card__post-date">18 Novembre, 2018</div>
+      <div class="news-card__details-wrapper">
+        <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia iure architecto deserunt distinctio&hellip;</p>
+        <a href="https://codepen.io/bsehovac/pen/EMyWVv" class="news-card__read-more">Jouer <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="news-card">
+    <a class="news-card__card-link"></a>
+    <img src="{{ asset('images/multiverse/jeux/jeuxvideos/runner.jpg') }}" alt="" class="news-card__image">
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title">Pas d'assurance 5<sup>ème</sup> Edition</h2>
+      <div class="news-card__post-date">3 Juillet, 2021</div>
+      <div class="news-card__details-wrapper">
+        <p class="news-card__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est pariatur nemo tempore repellat? Ullam sed officia.</p>
+        <a href="#" class="news-card__read-more">Jouer <i class="fas fa-long-arrow-alt-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div style="margin-top:3%; margin-bottom:3%;">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="gooey">
+                <!-- in="sourceGraphic" -->
+                <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="highContrastGraphic" />
+                <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+    <a href=""><button id="gooey-button">
+        En voir plus
+        <span class="bubbles">
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+        </span>
+    </button></a> 
+</div>
+
+<h2>Articles</h2>
+<hr style="width:70%; background-color:white;">
+
+<div class="container">
+  
+  <div class="col">
+
+    <a href="#">
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Top 5 jeux indépendants</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    </a>
+    
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Nouveauté console next generation</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Le jeux video au service de la pédagogie</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    
+  </div>
+  
+<div class="col">
+
+    <a href="#">
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Top 5 jeux indépendants</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    </a>
+    
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Nouveauté console next generation</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Le jeux video au service de la pédagogie</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="col">
+
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Astronauts Safely in Orbit Following Launch to International Space Station</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>As Solar Wind Blows, Our Heliosphere Balloons</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div>
+    
+    <div class="card-container">
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="overlay"></div>
+      <div class="card">
+        <h4>Tiny Asteroid Discovered Saturday Disintegrates Hours Later Over Southern Africa</h4>
+        <span class"chev">&rsaquo;Lire</span>
+      </div>
+    </div> 
+    
+  </div>
+  
+</div>
+
+<div style="margin-top:3%; margin-bottom:3%;">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="gooey">
+                <!-- in="sourceGraphic" -->
+                <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+                <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="highContrastGraphic" />
+                <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+    <a href=""><button id="gooey-button">
+        En voir plus
+        <span class="bubbles">
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+        </span>
+    </button></a> 
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="{{ asset('js/universe/jeuxvideo.js') }}"></script>
+{% endblock %}
+

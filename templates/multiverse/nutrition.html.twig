@@ -1,0 +1,968 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Nutrition{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/nutrition.css') }}">
+<link rel='stylesheet' href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/unicons.css'>
+{% endblock %}
+
+{% block body %}
+
+<h1 id="title">L'univers de la nutrition</h1>
+
+<hr style="width:100%; background-color:white;">
+
+{# Carousel #}
+
+<div class="containerB">
+<div class="slider">
+  <input type="radio" name="slider" title="slide1" checked="checked" class="slider__nav"/>
+  <input type="radio" name="slider" title="slide2" class="slider__nav"/>
+  <input type="radio" name="slider" title="slide3" class="slider__nav"/>
+  <input type="radio" name="slider" title="slide4" class="slider__nav"/>
+  <div class="slider__inner">
+    <div class="slider__contents"><i class="slider__image fa fa-codepen"></i>
+      <h2 class="slider__caption">Nutrition</h2>
+      <img width="100%" src="{{ asset ('images/multiverse/nutrition/nutrition.jpg')}}" alt="nutrition">
+      <p class="slider__txt">Une quantité de ressources sur la nutrition en général !</p>
+    </div>
+    <div class="slider__contents"><i class="slider__image fa fa-newspaper-o"></i>
+      <h2 class="slider__caption">Calculateur</h2>
+       <img width="100%" src="{{ asset ('images/multiverse/nutrition/macro.jpg')}}" alt="macro">
+      <p class="slider__txt">Calculer vos besoins caloriques et au niveau des macros, selon cos objectifs et vos habitudes !</p>
+    </div>
+    <div class="slider__contents"><i class="slider__image fa fa-television"></i>
+      <h2 class="slider__caption">Aliments</h2>
+       <img style="margin-top:7%" width="100%" src="{{ asset ('images/multiverse/nutrition/aliments.jpg')}}" alt="aliment">
+      <p class="slider__txt">Une liste d'aliments avec leurs propriétés: bienfaits, macro-nutriments et contre indications.</p>
+    </div>
+    <div class="slider__contents"><i class="slider__image fa fa-diamond"></i>
+      <h2 class="slider__caption">Recettes</h2>
+       <img width="100%" src="{{ asset ('images/multiverse/nutrition/recipes.jpg')}}" alt="recette">
+      <p class="slider__txt">Des recettes adaptées selon vos envies et objectifs. Elles sont bien sur adaptable.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr style="width:100%; background-color:white;">
+
+{# Calculateur  #}
+
+<section id="main">
+      <h1 >Calculateur de calories et de macronutriments</h1>
+      <p>Suivez les consignes pour avoir calculer les calories et macro-nutriments à consommer selon ton objectif .</p>
+      <section class="fitness-goal">
+        <h2>Je veux</h2>
+        <button class="bf-goal button" type="button" value="perdre de la graisse corporel">Perdre de la graisse corporelle</button>
+        <button class="mg-goal button" type="button "value="gagner du muscle">Gagner du muscle</button>
+        <button class="ma-goal button" type="button" value="maintenir ton poids">Maintenir mon poid</button>
+      </section>
+      <section class="bf">
+        <h2>Je connais mon pourcentage de graisse corporelle</h2>
+        <button class="yes button" id="bf" type="button">Oui</button>
+        <button class="no button" id="bf" type="button">Non</button>
+      </section>
+      <section class="body-fat-yes">
+        <input class="inputX" type="number" id="body-fat" placeholder="Taux de gras %">
+        <input class="inputX" type="number" id="weight-yes" placeholder="Poid en lbs.">
+      </section> 
+      <section class="body-fat-no">
+      <label>Homme <input class="inputX" type="radio" name="gender" value="male"></label>
+      <label>Femme <input class="inputX" type="radio" name="gender" value="female"></label>
+      </section> 
+      <section class="body-fat-no">
+        <input class="inputX" type="number" id="age" placeholder="Age" min="1" max="100">
+        <input class="inputX" type="number" id="weight-no" placeholder="Poid lbs." min="1" max="999">
+      </section> 
+      <section class="body-fat-no">
+        <input class="inputX" type="number" id="feet" placeholder="Pied" min="1" max="10">
+        <input class="inputX" type="number" id="inches" placeholder="Pouce" min="1" max="12">
+      </section> 
+      <section class="pa-factor">
+        <h2>Je fais du sport</h2>
+        <label>0 jour par semaine <input class="inputX" type="radio" name="pa" class="pa" value="1.2"></label>
+        <label>1-2 jours par semaine <input class="inputX" type="radio" name="pa" class="pa"  value="1.375"></label>
+        <label>3-4 jours par semaine <input class="inputX" type="radio" name="pa" class="pa" value="1.55"></label>
+        <label>5-6 jours par semaine <input class="inputX" type="radio" name="pa" class="pa" value="1.725"></label>
+        <label>5-7 jours par semaine en tant qu'athlète <input class="inputX" type="radio" name="pa" class="pa" value="1.9"></label>
+      </section>
+      <section class="pa-factor">
+        <h2>Je mange cette quantité de repas par jour</h2>
+        <input class="inputX" type="number" id="meal-count" placeholder="4" min="1" max="10">
+      </section>
+      <section>
+        <button class="calculate submit" type="button">Calculer</button>
+      </section>
+      <section class="result">
+        <h2>Pour <span class="goal-str"></span>, votre consommation quotidienne doit être de</h2>
+        <ul class="cals-macs"></ul>
+          <li class="cals"></li>
+          <li class="protein"></li>
+          <li class="carbs"></li>
+          <li class="fats"></li>
+      </section>
+    </section>
+
+<hr style="width:100%; background-color:white;">
+
+{# Table aliments #}
+
+<h1 >Table des aliments</h1>
+
+<p>Une liste non exhausitif de différents type d'aliments et leur fiche de leurs macro-nutriments</p>
+
+{# Listes boutons category #}
+
+	<div class="section full-height">
+      <div class="boxButton">
+      	<input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
+      	<label for="modal-btn">Viandes et poissons <img width="30%" src="{{ asset ('images/multiverse/nutrition/Proteines.png')}}" alt="protéines"></label> 		
+        <input class="modal-btn2" type="checkbox" id="modal-btn2" name="modal-btn2"/>
+      	<label for="modal-btn2">Légumes <img width="45%" src="{{ asset ('images/multiverse/nutrition/legume.png')}}" alt="legume"></label>
+        <input class="modal-btn3" type="checkbox" id="modal-btn3" name="modal-btn3"/>
+      	<label for="modal-btn3">Fruits <img width="25%" src="{{ asset ('images/multiverse/nutrition/fruit.png')}}" alt="fruit"></label>
+        <input class="modal-btn4" type="checkbox" id="modal-btn4" name="modal-btn4"/>
+      	<label for="modal-btn4">Céréales <img width="31%" src="{{ asset ('images/multiverse/nutrition/cereale.png')}}" alt="céréale"></label> 	 		
+     
+{# Modal Viandes #}
+
+      	<div class="modal">		
+	      	<div class="modal-wrap">	
+			<main>
+  <ol class="gradient-list">
+    <li>
+      <div class="listTitleFood">
+        <h4>Steack haché</h4>
+        <img width="30%" height="30%" src="https://www.academiedugout.fr/images/5558/1200-auto/fotolia_52893953_subscription_xxl-copy.jpg?poix=50&poiy=50" alt="">
+      </div>
+      <hr style="margin-top:-5%; background-color:black">
+      <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+      <p>Calorie: 241</p>
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Protéine</th>
+              <th>Glucide</th>
+              <th>Lipide</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>24 g</td>
+              <td>0 g</td>
+              <td>15 g</td>
+          </tr>
+          <tbody>
+      </table>
+    </li>
+    <li>
+      <div class="listTitleFood">
+        <h4>Steack haché</h4>
+        <img width="30%" height="30%" src="https://www.academiedugout.fr/images/5558/1200-auto/fotolia_52893953_subscription_xxl-copy.jpg?poix=50&poiy=50" alt="">
+      </div>
+      <hr style="margin-top:-5%; background-color:black">
+      <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+      <p>Calorie: 241</p>
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Protéine</th>
+              <th>Glucide</th>
+              <th>Lipide</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>24 g</td>
+              <td>0 g</td>
+              <td>15 g</td>
+          </tr>
+          <tbody>
+      </table>
+    </li>
+    <li>
+      <div class="listTitleFood">
+        <h4>Steack haché</h4>
+        <img width="30%" height="30%" src="https://www.academiedugout.fr/images/5558/1200-auto/fotolia_52893953_subscription_xxl-copy.jpg?poix=50&poiy=50" alt="">
+      </div>
+      <hr style="margin-top:-5%; background-color:black">
+      <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+      <p>Calorie: 241</p>
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Protéine</th>
+              <th>Glucide</th>
+              <th>Lipide</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>24 g</td>
+              <td>0 g</td>
+              <td>15 g</td>
+          </tr>
+          <tbody>
+      </table>
+    </li>
+       <li>
+      <div class="listTitleFood">
+        <h4>Steack haché</h4>
+        <img width="30%" height="30%" src="https://www.academiedugout.fr/images/5558/1200-auto/fotolia_52893953_subscription_xxl-copy.jpg?poix=50&poiy=50" alt="">
+      </div>
+      <hr style="margin-top:-5%; background-color:black">
+      <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+      <p>Calorie: 241</p>
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Protéine</th>
+              <th>Glucide</th>
+              <th>Lipide</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>24 g</td>
+              <td>0 g</td>
+              <td>15 g</td>
+          </tr>
+          <tbody>
+      </table>
+    </li>
+       <li>
+      <div class="listTitleFood">
+        <h4>Steack haché</h4>
+        <img width="30%" height="30%" src="https://www.academiedugout.fr/images/5558/1200-auto/fotolia_52893953_subscription_xxl-copy.jpg?poix=50&poiy=50" alt="">
+      </div>
+      <hr style="margin-top:-5%; background-color:black">
+      <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+      <p>Calorie: 241</p>
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Protéine</th>
+              <th>Glucide</th>
+              <th>Lipide</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>24 g</td>
+              <td>0 g</td>
+              <td>15 g</td>
+          </tr>
+          <tbody>
+      </table>
+    </li>
+        <li>
+      <div class="listTitleFood">
+        <h4>Steack haché</h4>
+        <img width="30%" height="30%" src="https://www.academiedugout.fr/images/5558/1200-auto/fotolia_52893953_subscription_xxl-copy.jpg?poix=50&poiy=50" alt="">
+      </div>
+      <hr style="margin-top:-5%; background-color:black">
+      <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+      <p>Calorie: 241</p>
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Protéine</th>
+              <th>Glucide</th>
+              <th>Lipide</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>24 g</td>
+              <td>0 g</td>
+              <td>15 g</td>
+          </tr>
+          <tbody>
+      </table>
+    </li>
+       <li>
+      <div class="listTitleFood">
+        <h4>Steack haché</h4>
+        <img width="30%" height="30%" src="https://www.academiedugout.fr/images/5558/1200-auto/fotolia_52893953_subscription_xxl-copy.jpg?poix=50&poiy=50" alt="">
+      </div>
+      <hr style="margin-top:-5%; background-color:black">
+      <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+      <p>Calorie: 241</p>
+      <table class="fl-table">
+          <thead>
+          <tr>
+              <th>Protéine</th>
+              <th>Glucide</th>
+              <th>Lipide</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td>24 g</td>
+              <td>0 g</td>
+              <td>15 g</td>
+          </tr>
+          <tbody>
+      </table>
+    </li>
+  </ol>
+</main>
+          </div>
+	      	</div>
+
+{# Modal Legumes  #}
+
+    <div class="modal2">		
+	    <div class="modal-wrap2">	
+			    <main>
+            <ol class="gradient-list">
+              <li>
+                <div class="listTitleFood">
+                  <h4>Brocolis</h4>
+                  <img width="20%" height="20%" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ff.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 29</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>3 g</td>
+                        <td>7 g</td>
+                        <td>0 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+              <li>
+                <div class="listTitleFood">
+                  <h4>Brocolis</h4>
+                 <img width="20%" height="20%" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ff.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 29</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                         <td>3 g</td>
+                        <td>7 g</td>
+                        <td>0 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+              <li>
+                <div class="listTitleFood">
+                  <h4>Brocolis</h4>
+                  <img width="20%" height="20%" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ff.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 29</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>3 g</td>
+                        <td>7 g</td>
+                        <td>0 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Brocolis</h4>
+                <img width="20%" height="20%" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ff.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 29</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>3 g</td>
+                        <td>7 g</td>
+                        <td>0 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Brocolis</h4>
+                <img width="20%" height="20%" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ff.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>3 g</td>
+                        <td>7 g</td>
+                        <td>0 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                  <li>
+                <div class="listTitleFood">
+                  <h4>Brocolis</h4>
+                  <img width="20%" height="20%" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ff.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 29</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>3 g</td>
+                        <td>7 g</td>
+                        <td>0 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Brocolis</h4>
+                  <img width="20%" height="20%" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c1ff.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 29</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>3 g</td>
+                        <td>7 g</td>
+                        <td>0 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+            </ol>
+                  </main>
+              </div>
+            </div>		
+
+    {# Modal Fruits  #}
+
+    <div class="modal3">		
+	    <div class="modal-wrap3">	
+			    <main>
+            <ol class="gradient-list">
+              <li>
+                <div class="listTitleFood">
+                  <h4>Banane</h4>
+                  <img width="20%" height="20%" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c137.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+              <li>
+                <div class="listTitleFood">
+                  <h4>Banane</h4>
+                  <img width="20%" height="20%" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c137.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+              <li>
+                <div class="listTitleFood">
+                  <h4>Banane</h4>
+                   <img width="20%" height="20%" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c137.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Banane</h4>
+                  <img width="20%" height="20%" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c137.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Banane</h4>
+                 <img width="20%" height="20%" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c137.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                  <li>
+                <div class="listTitleFood">
+                  <h4>Banane</h4>
+                 <img width="20%" height="20%" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c137.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Banane</h4>
+                    <img width="20%" height="20%" src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c137.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+            </ol>
+                  </main>
+              </div>
+            </div>	
+
+    {# Modal Céréales  #}
+
+    <div class="modal4">		
+	    <div class="modal-wrap4">	
+			    <main>
+            <ol class="gradient-list">
+              <li>
+                <div class="listTitleFood">
+                  <h4>Riz</h4>
+                  <img width="20%" height="20%" src="https://www.pngmart.com/files/5/Rice-PNG-Photos.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+              <li>
+                <div class="listTitleFood">
+                  <h4>Riz</h4>
+                   <img width="20%" height="20%" src="https://www.pngmart.com/files/5/Rice-PNG-Photos.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+              <li>
+                <div class="listTitleFood">
+                  <h4>Riz</h4>
+                    <img width="20%" height="20%" src="https://www.pngmart.com/files/5/Rice-PNG-Photos.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Riz</h4>
+                   <img width="20%" height="20%" src="https://www.pngmart.com/files/5/Rice-PNG-Photos.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Riz</h4>
+                   <img width="20%" height="20%" src="https://www.pngmart.com/files/5/Rice-PNG-Photos.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                  <li>
+                <div class="listTitleFood">
+                  <h4>Riz</h4>
+                  <img width="20%" height="20%" src="https://www.pngmart.com/files/5/Rice-PNG-Photos.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+                <li>
+                <div class="listTitleFood">
+                  <h4>Riz</h4>
+                     <img width="20%" height="20%" src="https://www.pngmart.com/files/5/Rice-PNG-Photos.png" alt="">
+                </div>
+                <hr style="margin-top:-5%; background-color:black">
+                <h6 style="margin-top:-3%; margin-bottom:-3%; color:black">Pour 100g</h6>
+                <p>Calorie: 241</p>
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>Protéine</th>
+                        <th>Glucide</th>
+                        <th>Lipide</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>24 g</td>
+                        <td>0 g</td>
+                        <td>15 g</td>
+                    </tr>
+                    <tbody>
+                </table>
+              </li>
+            </ol>
+                  </main>
+              </div>
+            </div>	
+
+      	</div>	
+	</div>
+
+<hr style="width:100%; background-color:white;">
+
+{# Recettes #}
+
+<h1 >Recettes</h1>
+
+<div class="wrapper">
+
+	<h3><strong>Toutes les recettes<span>( 4 )</span></strong></h3>
+
+	<div class="cards">
+
+		<figure class="card">
+
+			<img src="https://www.yumelise.fr/wp-content/uploads/2022/01/poulet-toscane-500x500.jpg" />
+
+			<figcaption>Poulet à la Toscanne</figcaption>
+
+		</figure>
+
+		<figure class="card">
+
+			<img src="https://www.papillesetpupilles.fr/wp-content/uploads/2012/02/Boeuf-mjote%CC%81-a%CC%80-la-mexicaine.jpeg" />
+
+			<figcaption>Boeuf mijoté à la Mexicaine</figcaption>
+
+		</figure>
+
+		<figure class="card">
+
+			<img src="https://img.cuisineaz.com/660x660/2018/03/19/i138232-poisson-a-la-creme-et-au-whisky.jpeg" />
+
+			<figcaption>Poisson à la crème</figcaption>
+
+		</figure>
+
+		<figure class="card">
+
+			<img src="https://menu-vegetarien.com/storage/2021/06/recette-vegan-bowl-ete.jpg" />
+
+			<figcaption>Bol vegan d'été</figcaption>
+
+		</figure>
+
+	</div>
+
+	<h3><strong>Nouvelles recettes</strong></h3>
+
+	<div class="news">
+
+		<figure class="article">
+
+			<img src="https://resize.elle.fr/original/var/plain_site/storage/images/elle-a-table/les-dossiers-de-la-redaction/dossier-de-la-redac/menu-gastronomique/88780110-1-fre-FR/Comment-faire-un-menu-gastronomique.jpg" />
+
+			<figcaption>
+
+				<h5>Saint-Jacques Rossini</h5>
+
+				<p>
+
+				Une délicieuse recette gastronmique à base de Saint-Jacques
+
+				</p>
+
+			</figcaption>
+
+		</figure>
+
+		<figure class="article">
+
+			<img src="https://www.atelierdeschefs.com/media/recette-e1449-croustillant-d-oeuf-de-poulette-mouillette-au-saumon-fume.jpg" />
+
+			<figcaption>
+
+				<h5>Croustillant d'oeuf de poulette</h5>
+
+				<p>
+
+				Une idée originale pour préparer des oeufs fondants et croustillants. Epater vos convives !
+
+				</p>
+
+			</figcaption>
+
+		</figure>
+
+	</div>
+
+</div>
+
+<script src="{{ asset('js/universe/nutrition.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Results for: {{query}}{% endblock %}
+
+{% block body %}
+<div class="search-content">
+    <div class="search-content-inner">
+        <div class="search-users">
+            <h2>Utilisateurs</h2>
+            <div class="search-users-inner">
+            </div>
+            <div class="search-users-more btn btn-primary">
+                <a>En voir plus</a>
+            </div>
+        </div>
+        <div class="search-posts">
+            <h2>Publications</h2>
+            <div class="search-posts-inner">
+            </div>
+            <div class="search-posts-more btn btn-primary">
+                <a>En voir plus</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var query = '{{query}}';
+    var usersStage = 1;
+    var usersAll = false;
+    var postsStage = 1;
+    var postsAll = false;
+
+    $(document).ready(function() {
+        function searchUsers() {
+            $.ajax({
+                url: '{{path('api_searchUsers')}}',
+                type: 'POST',
+                data: {
+                    query: query,
+                    stage: usersStage
+                }
+            }).done(function(data) {
+                if (data.length < 2 || data == 'end' || data['error']) {
+                    $('.search-users-more').addClass('disabled');
+                    usersAll = true;
+                    if(usersStage <= 1) $('.search-users-inner').html('<div class="search-no-users">Personnes a été trouver </div>');
+                    return;
+                }
+                data.forEach(function(user) {
+                    if(user == 'end') {
+                        $('.search-users-more').addClass('disabled');
+                        usersAll = true;
+                        return;
+                    }
+                    userTemplate = `
+                        <div class="search-user" uid="${user.uid}">
+                            <div class="search-user-pfp">
+                                <img src="${user.pfp}" alt="">
+                            </div>
+                            <div class="search-user-name">${user.username}</div>
+                        </div>
+                    `;
+                    $('.search-users-inner').append(userTemplate);
+                });
+                usersStage++;
+            });
+        } searchUsers();
+
+        function searchPosts() {
+            $.ajax({
+                url: '{{path('api_searchPosts')}}',
+                type: 'POST',
+                data: {
+                    query: query,
+                    stage: postsStage
+                }
+            }).done(function(data) {
+                if (data.length < 2 || data == 'end' || data['error']) {
+                    $('.search-posts-more').addClass('disabled');
+                    postsAll = true;
+                    if(postsStage == 1) $('.search-posts-inner').html('<div class="search-no-posts">Pas de publications trouvées</div>');
+                    return;
+                }
+                console.log(data);
+                data.forEach(function(post) {
+                    if(post == 'end') {
+                        $('.search-posts-more').addClass('disabled');
+                        postsAll = true;
+                        return;
+                    }
+
+                    previewImage = null;
+                    if(post.images!=null){
+                        postImages = JSON.parse(post.images);
+                        previewImage = postImages[0];
+                    }
+
+                    dateDiff = moment(moment()).diff(post.date,"hours") > 24;
+
+                    let compactPostTemplate = `
+                        <div class="compact-post" postid="${post.id}">
+                            <div class="post-bar">
+                                <div class="bar-user">
+                                    <div class="bar-user-pfp">
+                                        <img src="${post.author_pfp}" alt="">
+                                    </div>
+                                    <div class="bar-user-name">${post.author_username}</div>
+                                </div>
+                                <span style="display:none">${moment.locale('fr')}</span>
+                                <div class="bar-date">
+                                    ${moment(post.date).fromNow()}${dateDiff?',':''}
+                                </div>
+                                ${dateDiff ? `
+                                    <div class="bar-time">
+                                        ${moment(post.date).format('HH:mm')}
+                                    </div>
+                                `:''}
+                                ${post.status == 1 ? `<div class="bar-status">(Edited)</div>` : ''}
+                            </div>
+                            <div class="post-content">
+                                ${previewImage ? `<div class="post-preview-image"><img src="${previewImage}"></div>` : ''}
+                                <div class="post-title">${post.title}</div>
+                            </div>
+                            <div class="post-stats">
+                                <div class="post-stats-votes">
+                                    <div class="votes-icon material-icons">${post.reactions >= 0 ? `sentiment_very_satisfied`:`sentiment_very_dissatisfied`}</div>
+                                    <div class="reactions-value">${post.reactions}</div>
+                                </div>
+                                <div class="post-stats-comments">
+                                    <span class="comments-icon material-icons">message</span>
+                                    <div class="comments-value">${post.comments}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('.search-posts-inner').append(compactPostTemplate);
+                });
+                postsStage++;
+            });
+        } searchPosts();
+
+        $('.search-users-more').click(function() {
+            if(usersAll) return;
+            $(window).scrollTop($('.search-users-more').offset().top - $('.search-users-more').height() - 20);
+            searchUsers();
+        });
+
+        $('.search-posts-more').click(function() {
+            if(postsAll) return;
+            searchPosts();
+        });
+
+        $('.search-users-inner').on('click', '.search-user', function() {
+            window.location.href = `/user/${$(this).attr('uid')}`;
+        });
+
+        $('.search-posts-inner').on('click', '.compact-post', function() {
+            window.location.href = `/post/${$(this).attr('postid')}`;
+        });
+    });
+</script>
+{% endblock %}

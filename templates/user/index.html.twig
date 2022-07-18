@@ -1,0 +1,220 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% if isOwner %}My Profile{% else %}{{ name }}{% endif %} | Portal{% endblock %}
+
+{% block body %}
+<div class="profile-content" uid="{{ uid }}" name="{{ name }}" isowner="{{ isOwner }}">
+    <div class="profile-user">
+        <div class="profile-user-top">
+            <div class="profile-user-pfp">
+                <img src="{{ pfp }}" alt="{{ name }}">
+            </div>
+
+            <div class="profile-user-name">{{ name }}</div>
+
+            <div class="profile-user-manage">
+                {% if isOwner %}
+                    <div class="btn edit-profile-btn">
+                        <a href="/user/edit">Editer le profil</a>
+                    </div>
+                {% elseif app.user %}
+                    {% if friendship == 0 %}
+                        <div class="btn invite-btn">
+                            <a href="/user/invite/{{ uid }}">Invitation</a>
+                        </div>
+                    {% endif %}
+
+                    {% if friendship == 1 and isMgr %}
+                        <div class="btn cancel-inv-btn">
+                            <a href="/user/cancel/{{ uid }}">Annuler invitation</a>
+                        </div>
+
+                    {% elseif friendship == 1 %}
+                        <div class="btn accept-inv-btn">
+                            <a href="/user/accept/{{ uid }}">Accepter invitation</a>
+                        </div>
+                        <div class="btn deny-inv-btn">
+                            <a href="/user/deny/{{ uid }}">Refuser invitation</a>
+                        </div>
+                    {% endif %}
+
+                    {% if friendship == 2 %}
+                        <div class="btn unfriend-btn">
+                            <a href="/user/unfriend/{{ uid }}">Ne plus être ami</a>
+                        </div>
+                    {% endif %}
+
+                    {% if friendship != 3 and friendship != 4 %}
+                        <div class="btn user-block-btn">
+                            <a href="/user/block/{{ uid }}">Bloquer</a>
+                        </div>
+                    {% endif %}
+
+                    {% if friendship == 3 or friendship == 4 %}
+                        <div class="btn user-unblock-btn">
+                            <a href="/user/unblock/{{ uid }}">Débloquer</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="profile-user-bottom">
+            <strong>Email:</strong>{% if email %}<div class=" markdown"> {{email}}</div>{% endif %}
+        </div>
+        <div class="profile-user-bottom">
+            <strong>Info:</strong>{% if bio %}<div class="profile-user-bio markdown"></div>{% endif %}
+        </div>
+    </div>
+
+    <div class="profile-data">
+
+        <div class="profile-posts">
+        </div>
+
+        <div class="profile-friends">
+            <div class="profile-friends-title">Amis</div>
+            <div class="profile-friends-list">
+            </div>
+            <div class="profile-friends-show-all">
+                <a href="/user/friends/{{ uid }}">Tout voir</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var uid = {{ uid }};
+    var isOwner = {{ isOwner ? 'true' : 'false' }};
+    var bio = {% if bio %}`{{ bio|e('js') }}`{% else %}null{% endif %};
+
+    var postsPage = 1;
+    var posts_loaded = false;
+
+    $(document).ready(function() {
+        function processBio() {
+            if(bio==null) return;
+            let bioHtml = md.render(bio);
+            $('.profile-user-bio').html(bioHtml);
+        } processBio();
+
+        function loadFriends() {
+            $.ajax({
+                url: "{{ path('api_friends') }}/"+uid,
+                type: 'GET'
+            }).done(function(data) {
+                let maxCount = 10;
+                if(data.length < 10) maxCount = data.length;
+
+                if(data.length <= 0){
+                    $('.profile-friends-list').html('<div class="no-friends">Aucun amis</div>');
+                    return;
+                }
+                
+                for(let i = 0; i < maxCount; i++) {
+                    let friend = data[i];
+                    let friendTemplate = `
+                        <div class="profile-friend" uid="${friend.id}" name="${friend.username}">
+                            <div class="profile-friend-pfp">
+                                <img src="${friend.pfp}" alt="${friend.username}">
+                            </div>
+                            <div class="profile-friend-name">${friend.username}</div>
+                        </div>
+                    `;
+                    $('.profile-friends-list').append(friendTemplate);
+                }
+            }).fail(function(data) {
+                console.log(data);
+            });
+        } loadFriends();
+
+        //open friend profile
+        $('.profile-friends-list').on('click', '.profile-friend', function() {
+            let uid = $(this).attr('uid');
+            window.location.href = "{{path('user_show')}}/" + uid;
+        });
+
+        function loadPosts() {
+            $.ajax({
+                url: "{{ path('api_userposts') }}",
+                type: 'POST',
+                data: {
+                    uid: uid,
+                    page: postsPage
+                }
+            }).done(function(data) {
+                if(data.length <= 1 && postsPage==1){
+                    $('.profile-posts').html('<div class="no-posts">Pas de publications</div>');
+                    posts_loaded = true;
+                    return;
+                }
+                
+                data.forEach(function(post) {
+                    if(post == "end") {
+                        posts_loaded = true;
+                        return;
+                    }
+
+                    previewImage = null;
+                    if(post.images!=null){
+                        postImages = JSON.parse(post.images);
+                        previewImage = postImages[0];
+                    }
+
+                    dateDiff = moment(moment()).diff(post.date,"hours") > 24;
+
+                    let compactPostTemplate = `
+                        <div class="compact-post" postid="${post.id}">
+                            <div class="post-bar">
+                                <span style="display:none">${moment.locale('fr')}</span>
+                                <div class="bar-date">
+                                    
+                                    ${moment(post.date).fromNow()}${dateDiff?',':''}
+                                </div>
+                                ${dateDiff ? `
+                                    <div class="bar-time">
+                                        ${moment(post.date).format('HH:mm')}
+                                    </div>
+                                `:''}
+                                ${post.status == 1 ? `<div class="bar-status">(Edited)</div>` : ''}
+                            </div>
+                            <div class="post-content">
+                                ${previewImage ? `<div class="post-preview-image"><img src="${previewImage}"></div>` : ''}
+                                <div class="post-title">${post.title}</div>
+                            </div>
+                            <div class="post-stats">
+                                <div class="post-stats-votes">
+                                    <div class="votes-icon material-icons">${post.reactions >= 0 ? `sentiment_very_satisfied`:`sentiment_very_dissatisfied`}</div>
+                                    <div class="reactions-value">${post.reactions}</div>
+                                </div>
+                                <div class="post-stats-comments">
+                                    <span class="comments-icon material-icons">message</span>
+                                    <div class="comments-value">${post.comments}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('.profile-posts').append(compactPostTemplate);
+                });
+            }).fail(function(data) {
+                console.log(data);
+            });
+        } loadPosts();
+
+        //fetch more posts if reached bottom
+        $(window).scroll(function() {
+            if(($(window).scrollTop() + $(window).height() >= $(document).height()) && !posts_loaded) {
+                postsPage++;
+                loadPosts();
+            }
+        });
+
+        //open post on click
+        $('.profile-posts').on('click', '.compact-post', function() {
+            let postid = $(this).attr('postid');
+            window.location.href = "{{path('post_show')}}/" + postid;
+        });
+    });
+</script>
+
+{% endblock %}

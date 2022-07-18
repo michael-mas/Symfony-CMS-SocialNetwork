@@ -1,0 +1,494 @@
+body, html{
+    height: auto !important;
+   
+}
+
+body{
+    padding: 0 !important;
+}
+
+.footer{
+  position: relative !important;
+}
+
+/* Page avec template 1 */
+
+
+.box{
+    width: 100%;
+    height: 100%;
+}
+
+article {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    background: black;
+  }
+  article h1 {
+    text-align: center;
+    margin-top: -100px;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 20px 20px 10px 20px;
+    font-size: 40px;
+    line-height: 40px;
+    position: sticky;
+    top: -24%;
+    backdrop-filter: blur(20px);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.6));
+    color: white;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid white;
+  }
+  article h1 .byline {
+    text-align: center;
+    font-size: 18px;
+    color: rgb(189, 183, 176);
+  }
+
+  article h1 .byline2 {
+    text-align: end;
+    font-size: 14px;
+    color: rgb(189, 183, 176);
+  }
+  article p {
+    margin: 0 0 20px 0;
+  }
+
+  span.line {
+    background-color: rgb(0, 0, 0) !important;
+}
+  .label{
+    font-family: initial !important;
+    font-size: initial !important;
+    line-height: normal;
+    height: 22px;
+    top: 4px !important;
+    border: 1px solid rgb(0, 0, 0);
+  }
+
+  div.backBtn:hover span.label {
+    border: 0px !important;
+  }
+
+  .box-main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+
+/* Page avec template 2 */
+
+:root {
+  --secondary-color: #151226;
+  --third-color: #e92222;
+  --fourth-color: #93e84d;
+  --contrast-color: #ffeff8;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: -10;
+  background-color: var(--contrast-color);
+}
+
+.containerV {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  animation: expand .8s ease forwards;
+  background-color: var(--secondary-color);
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: all .8s ease;
+}
+
+.containerY {
+  padding: 2%;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  animation: expand .8s ease forwards;
+  background-color: var(--third-color);
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: all .8s ease;
+}
+
+.containerX {
+  padding: 2%;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  animation: expand .8s ease forwards;
+  background-color: var(--fourth-color);
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: all .8s ease;
+}
+
+.container_content {
+ width: 50%;
+}
+
+.container_content_inner {
+  width: 80%;
+  margin-left: 80px;
+}
+
+.container_outer_img {
+  margin: 30px;
+  width: 50%;
+  overflow: hidden;
+}   
+    
+.container_img {
+  width: 100%;
+  animation: slideIn 1.5s ease-in-out forwards;
+}
+
+.par {
+  height: auto;
+  overflow: hidden;
+}
+
+.p{
+  line-height: 28px;
+  transform: translateY(300px);
+  animation: slideUp .8s ease-in-out forwards .8s;
+}
+
+.btns {
+  height: 100%;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.btns_more {
+  background: transparent;
+  width: 100%;
+  color: #aca9a9;
+  font-size: 16px;
+  text-transform: uppercase;
+  position: relative;
+  margin-top: 15px;
+  outline: none;
+  transform: translateY(50px);
+  animation: slideUp .8s ease-in-out  forwards 1s;
+}
+
+.title {
+  overflow: hidden;
+  height: auto;
+}
+
+.h1 {
+    font-size: 140px;
+    color: var(--contrast-color);
+    margin-bottom: 20px;
+    transform: translateY(200px);
+    animation: slideUp .8s ease forwards .5s;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(500px) scale(.2);
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: translateX(1400px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+/* Template de page 3 */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.hide {
+  display: none;
+}
+
+.body {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  margin: 0;
+  color: #212121;
+  transition: background-color 1s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  transform: perspective(600px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  will-change: transform;
+}
+.is-open {
+  color: white;
+  background-color: #212121;
+}
+.is-open .square {
+  padding: 0;
+}
+.is-open .card {
+  transform: scale(1);
+}
+.is-open .card:hover {
+  mix-blend-mode: normal;
+  opacity: 1;
+  filter: grayscale(0);
+}
+.is-open .copy-wrap {
+  transform: translate3d(0, -100%, 0);
+}
+.is-open .title {
+  color: white;
+  mix-blend-mode: normal;
+}
+.is-open .btn:hover {
+  background-color: #212121;
+  color: white;
+}
+.is-open .btn:hover .btn-icon {
+  fill: white;
+}
+.square {
+  cursor: pointer;
+  border: solid 0px transparent;
+  padding: 120px;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(-50%, -50%, 0);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: linear-gradient(230deg, #a24bcf, #4b79cf, #4bc5cf);
+  background-clip: content-box;
+  background-size: 400% 400%;
+  border-color: currentColor;
+  -webkit-animation: partytime 7s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
+          animation: partytime 7s cubic-bezier(0.46, 0.03, 0.52, 0.96) infinite;
+  transition: padding 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform;
+}
+@-webkit-keyframes partytime {
+  0% {
+    background-position: 83% 0%;
+  }
+  50% {
+    background-position: 18% 100%;
+  }
+  100% {
+    background-position: 83% 0%;
+  }
+}
+@keyframes partytime {
+  0% {
+    background-position: 83% 0%;
+  }
+  50% {
+    background-position: 18% 100%;
+  }
+  100% {
+    background-position: 83% 0%;
+  }
+}
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  transition: transform 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), filter 1.25s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 1.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: perspective(1600px) translate3d(0, 0, 0) scale(0.5);
+  will-change: transform;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 400;
+}
+.card:hover {
+  box-shadow: 0 0 75px rgba(0, 0, 0, 0.2), 0 5px 20px rgba(0, 0, 0, 0.2);
+  mix-blend-mode: hard-light;
+  filter: grayscale(100%);
+  opacity: 0.8;
+}
+.card-title-wrap {
+  transform: perspective(1600px) translate3d(0, 0, 100px);
+  position: relative;
+  z-index: 200;
+  transition: transform 0.25s linear;
+}
+.card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+ 
+  will-change: transform;
+  transform: perspective(600px);
+  z-index: 100;
+}
+.btn {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: all 0.25s ease-in-out;
+  border: 0;
+  background-color: black;
+  padding: 12px 24px;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  mix-blend-mode: overlay;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.8) 0 4px 12px rgba(0, 0, 0, 0.9);
+  will-change: transform;
+  cursor: pointer;
+  z-index: 900;
+  margin-top: 60px;
+}
+.btn:active,
+.btn:focus {
+  outline: none;
+}
+.btn:hover {
+  background-color: white;
+  mix-blend-mode: normal;
+  color: #212121;
+}
+.btn:hover .btn-icon {
+  fill: black;
+}
+.btn-icon {
+  fill: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  transition: all 0.25s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+.title {
+  font-size: 120px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 900;
+  overflow: hidden;
+  color: black;
+  mix-blend-mode: overlay;
+}
+.name,
+.catogarize {
+  text-transform: uppercase;
+  color: currentColor;
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  transition: all 0.5s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+  transform: translate3d(-50%, 0, 0);
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+}
+.name {
+  top: 8%;
+}
+.copy-wrap {
+  color: black;
+  display: block;
+  transition: all 0.7s 0s ease-in-out;
+  position: relative;
+}
+.catogarize {
+  bottom: 5%;
+  overflow: hidden;
+  height: 72px;
+  line-height: 60px;
+  position: absolute;
+}
+.copyright .copy-wrap:before {
+  content: "";
+  width: 15px;
+  height: 2px;
+  background-color: currentColor;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.container-template3-Z{
+  padding: 2%;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  background-color:#4bc5cf;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.container-template3-Y{
+  display: flex;
+  padding: 2%;
+  height: 100vh;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  background-color:#cf4b4b;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}

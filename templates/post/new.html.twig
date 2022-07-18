@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle publication{% endblock %}
+
+{% block body %}
+
+<div class="post-new-content">
+    <div class="post-form-images">
+
+        <label for="image-upload" id="upload-btn">
+            <span title="Ajouter une image" class="material-icons">add</span>
+        </label>
+        <input type="file" id="image-upload" name="image-upload" accept="image/*" style="display:none;">
+    </div>
+    <div class="post-form-bottom">
+        {{ form_start(form) }}
+
+            {{ form_widget(form) }}
+
+            {# <a class="post-md-help" href="#####" target="_blank">
+                <span class="material-icons">help</span>
+                <span class="md-help-text">Aide</span>
+            </a> #}
+            <button type="submit" class="btn btn-primary">Créer une publication</button>
+
+        {{ form_end(form) }}
+    </div>
+</div>
+
+<script>
+    var imageList = [];
+
+    $(document).ready(function() {
+        $('.post-new-content').on('click', '.post-image', function() {
+            imageList.splice(imageList.indexOf($(this).attr('src')), 1);
+            $(this).remove();
+            if(imageList.length<=0) $('#post_form_images').val('');
+            else $('#post_form_images').val(JSON.stringify(imageList));
+        });
+
+        $('.post-new-content').on('change', '#image-upload', function() {
+            let file = this.files[0];
+            if(!file) return;
+            if(!file.type.match('image.*')) return;
+            if(file.size>=10000000){
+                alert('Image size must be less than 10MB');
+                $(this).val('');
+                return;
+            }
+            //upload to api
+            var formData = new FormData();
+            formData.append('file', file);
+            $.ajax({
+                url: '/api/upload/1',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function(data) {
+                $('#upload-btn').before(`
+                    <div class="post-image">
+                        <img src="${data.url}">
+                        <div class="post-image-delete">
+                            <span class="material-icons">clear</span>
+                        </div>
+                    </div>
+                `);
+                imageList.push(data.url);
+                $('#post_form_images').val(JSON.stringify(imageList));
+            }).fail(function(data) {
+                alert('Upload failed');
+            });
+            $(this).val('');
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacter moi !{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<h1 style="color:white !important">Contactes moi !</h1>
+
+<form class="form" id="form" action="https://formsubmit.co/masmichael280699@gmail.com" method="POST">
+    <div class="field email">
+        <div class="icon"></div><input name="email" class="input" id="email" type="email" placeholder="Email" autocomplete="off" />
+    </div>
+    <div class="field password">
+        <div class="icon"></div><input name="message" class="input" id="password" type="text" placeholder="Message" />
+    </div><button  type="submit" class="button" id="submit">Envoyer<div class="side-top-bottom"></div>
+        <div class="side-left-right"></div>
+        <input type="hidden" name="_next" value="https://127.0.0.1:8000/"></input>
+    </button><small>Remplis le formulaire</small>
+</form>
+  
+    <script src="{{ asset('js/contact.js') }}"></script>
+{% endblock %}

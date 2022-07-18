@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories pages{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ asset('css/categories.css') }}">
+{% endblock %} 
+
+
+
+{% block body %}
+
+<h1>Categories de base</h1>
+<hr style="width:90%;">
+
+<div class="box-u-base">
+<div>
+<h3 style="text-align:center">Corps</h3>
+<a href="{{ path('choice_multiverse') }}?match=body"><img id="loading"   width="120px" height="120px" src="{{ asset('images/multiverse/body.png') }}" alt="MBody"></a>
+</div>
+<div>
+<h3 style="text-align:center">Esprit</h3>
+<a href="{{ path('choice_multiverse') }}?match=spirit"><img id="loading"   width="120px" height="120px" src="{{ asset('images/multiverse/spirit.png') }}" alt="MSpirit"></a>
+</div>
+<div>
+<h3 style="text-align:center">Bienvaillance</h3>
+<a href="{{ path('choice_multiverse') }}?match=help"><img id="loading"   width="120px" height="120px" src="{{ asset('images/multiverse/help.png') }}" alt="MBody"></a>
+</div>
+<div>
+<h3 style="text-align:center">Plaisir</h3>
+<a href="{{ path('choice_multiverse') }}?match=pleasure"><img style="margin-left:3%" id="loading"  width="120px" height="120px" src="{{ asset('images/multiverse/pleasure.png') }}" alt="MBody"></a>
+</div>
+</div>
+
+<hr style="width:90%;"> 
+<h1 style="text-align:center">Categories de nos utilisateurs</h1>
+<hr style="width:90%;">          
+    <div class="box_categories">
+    {% for categories in categories %}
+        {% if categories.parent == null %}
+            <div>
+                <h2>{{ categories.nom }}</h2>
+            </div>
+        {% else %}
+            <div>
+                <div>
+                    <div>
+                        <div> <a class="btn-slide" href="{{ path('pages_list', {slug: categories.slug}) }}" >
+      <span class="circle"><i class="fas fa-space-shuttle"></i> 
+      </span>
+      <span class="title">{{ categories.nom }}</span>
+      <span class="title title-hover">Naviguer</span>
+     </a> </div>
+                    </div>
+                </div>
+            </div>    
+        {% endif %}
+    {% endfor %}
+    </div>
+
+<hr style="width:90%;"> 
+<h1>Voir toutes les pages</h1>
+<hr style="width:90%;">   
+
+<div class="boxMoon">
+<div class="containerM">
+		<a href="{{ path('pageslist.alls') }}">
+			<div class="button">
+        <div class="star"></div>
+				<div class="star s2"></div>
+				<div class=" star s3"></div>
+			<span class="text">Voir Univers</span>
+			</div>
+			<div class="moon"></div>
+		</a>
+	</div>
+    </div>
+
+<div class="hidden-box">x</div>
+
+{% endblock %}
+
+
+
+
+
+
+ 

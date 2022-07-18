@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multiverse_Enigme{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/enigme.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+
+<h1>Univers des énigmes</h1>
+<hr style="width:90%">
+
+<h2>Quizz Enigmatique</h2>
+
+<header>
+        <a style="margin-bottom:2%; cursor:pointer;" id="leaderboard-link">Voir les meilleurs scores <i class="fas fa-hand-point-left fa-lg"></i>
+        </i></a> 
+        
+        <time>Temps: <span id="time"></span></time>
+    </header>
+
+    <main>
+        <div id="start-card" class="card">
+            <h2 id="title">Quiz sur des enigmes</h2>
+            <p>Essayes de répondre aux questions suivantes relatives aux énigmes dans le temps imparti. <br><br> Oublis pas que les réponses incorrectes pénalisent votre score/temps de dix secondes !</p>
+            <button id="start-button" class="button">Commencer</button>
+        </div>
+
+        <div hidden id="question-card" class="card">
+
+            <h2 id="question-text"></h2>
+
+            <div id=quiz-options>
+                <button id="option0" class="button option-button"></button>
+                <button id="option1" class="button option-button"></button>
+                <button id="option2" class="button option-button"></button>
+                <button id="option3" class="button option-button"></button>
+            </div>
+
+            <div id="result-div">
+                <hr>
+                <p id="result-text"></p>
+            </div>
+
+        </div>
+
+        <div hidden id="score-card" class="card">
+            <h2>Tout est fait!</h2>
+            <p>Ton score final est <span id="score"></span>.</p>
+            <form class="inline-form" id="submission-form">
+                  <label for="initials">Entres tes initiales: </label>
+                  <input style="color:black;" type="text" id="initials">
+                  <button id="submit-button" class="button">Submit</button>
+            </form>
+        </div>
+
+        <div hidden id="leaderboard-card" class="card">
+            <h2>Scores</h2>
+            <ol id="highscore-list">
+            </ol>
+            <div class="inline-buttons">
+                <button id="back-button" class="button">Revenir en arrière</button>
+                <button id="clear-button" class="button">Effacer les scores</button>
+            </div>
+        </div>
+
+    </main>
+
+
+<script src="{{ asset('js/universe/enigme.js') }}"></script>
+
+{% endblock %}

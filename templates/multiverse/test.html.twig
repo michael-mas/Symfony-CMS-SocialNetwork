@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Test{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/multiverseTest.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1>Test du Multivers</h1>
+
+
+
+
+<div class="form">
+	
+	<header class="form__header">
+		<p class="form__instruction">Bienvenue voyageur! Commençons par dégrossir les possibilités parmi les nombreux univers existant.</p>
+	</header>
+	
+	<form action="{{ path('choice_multiverse') }}">
+		<fieldset class="form__options">
+			<legend class="form__question">Quel serai ta spécifité de prédilection?
+</legend>
+			<p class="form__answer"> 
+				<input type="radio" name="match" id="match_1" value="body" checked> 
+				<label for="match_1">
+					<img width="90%" src="{{ asset('images/multiverse/body.png') }}" alt="MBody">
+					Corps
+				</label> 
+			</p>
+			
+			<p class="form__answer"> 
+				<input type="radio" name="match" id="match_2" value="spirit"> 
+				<label for="match_2">
+					<img width="95%" src="{{ asset('images/multiverse/spirit.png') }}" alt="MBody">
+					Esprit
+				</label> 
+			</p>
+			
+			<p class="form__answer"> 
+				<input type="radio" name="match" id="match_3" value="help"> 
+				<label for="match_3">
+					<img width="110%" src="{{ asset('images/multiverse/help.png') }}" alt="MBody">
+					Bienvaillance
+				</label> 
+			</p>
+			
+			<p class="form__answer"> 
+				<input type="radio" name="match" id="match_4" value="pleasure"> 
+				<label for="match_4">
+					<img width="120%" src="{{ asset('images/multiverse/pleasure.png') }}" alt="MBody">
+					Plaisir
+				</label> 
+			</p>
+			
+		</fieldset>
+        <div style="display:flex; justify-content:center;">
+		<button class="form__button" type="submit">Envoyer ton choix</button>
+        </div>
+	</form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+
+<title>{% block title %}Administration{% endblock %}</title>
+
+{% block stylesheets %}
+<link rel="icon" href="{{ asset('images/faviconlogo-multiverse.png') }}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+<div id="pgside">
+  
+  <div id="pguser">
+    <i class="txt">Tableau de bord</i>
+  </div>
+
+  <a href="{{ path('app_home') }}">
+    <i style="font-size:17px" title="Accueil"  class="material-icons">home</i>
+    <i class="txt">Accueil du site</i>
+  </a>
+
+  
+  <a href="{{ path('panel_admin') }}">
+    <i style="font-size:17px" title="Accueil"  class="material-icons">laptop_windows</i>
+    <i class="txt">Administrateur</i>
+  </a>  
+  <a href="{{ path('users.list.alls') }}">
+    <i style="font-size:17px" title="Accueil"  class="material-icons">face</i>
+    <i class="txt">Utilisateurs</i>
+  </a>
+  <a href="#">
+    <i style="font-size:17px" title="Accueil"  class="material-icons">panorama</i>
+    <i class="txt">Publications</i>
+  </a>
+  <a href="#">
+     <i style="font-size:17px" title="Accueil"  class="material-icons">message</i>
+    <i class="txt">Messages</i>
+  </a>
+</div>
+
+
+{% endblock %}

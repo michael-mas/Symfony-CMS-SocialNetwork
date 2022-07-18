@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur le Multiverse{% endblock %}
+
+{% block body %}
+<div class="welcome-content">
+    <div class="welcome-left">
+        <div class="welcome-logo">
+            <img src="{{ asset('images/logo_multiverse2.png') }}" alt="Multiverse">
+        </div>
+    </div>
+    <div class="welcome-right">
+        <div class="welcome-title">Bienvenue sur le multiverse</div>
+        <div class="welcome-auth-options">
+            <div class="option welcome-login">
+                <a>Connectes toi</a>
+            </div>
+            <hr>
+            <div class="option welcome-register">
+                <a href="{{ path('app_register') }}">Inscris toi</a>
+            </div>
+        </div>
+        <div class="welcome-compact-auth hidden">
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.welcome-login').click(function() {
+            $('.welcome-compact-auth').load('{{ path('app_clogin') }}');
+            $('.welcome-auth-options').addClass('hidden').delay(300).queue(function() {
+                $('.welcome-auth-options').hide();
+                $('.welcome-compact-auth').removeClass('hidden');
+                $(this).dequeue();
+            });
+        });
+    });
+</script>
+{% endblock %}

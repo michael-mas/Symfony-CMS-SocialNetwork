@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Choice{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/memoire.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1>Univers lié à la mémoire</h1>
+<hr style="width:90%">
+
+<h2>Jeu de mémoire</h2>
+
+   <div class="game">
+        <div class="controls">
+            <button>Commencer</button>
+            <div class="stats">
+                <div class="moves">0 actions</div>
+                <div class="timer">temps: 0 sec</div>
+            </div>
+        </div>
+        <div class="board-container">
+            <div class="board" data-dimension="4"></div>
+            <div class="win">Tu as gagné!</div>
+        </div>
+    </div>
+
+<script src="{{ asset('js/universe/memoire.js') }}"></script>
+{% endblock %}

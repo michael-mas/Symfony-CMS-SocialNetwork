@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+
+
+.box_categories{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    margin-top: 6%;
+    margin-bottom: 6%;
+}
+
+#loading{
+    transition: 0.70s;
+    -webkit-transition: 0.70s;
+    -moz-transition: 0.70s;
+    -ms-transition: 0.70s;
+    -o-transition: 0.70s;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#loading:hover {
+    transition: 0.70s;
+    -webkit-transition: 0.70s;
+    -moz-transition: 0.70s;
+    -ms-transition: 0.70s;
+    -o-transition: 0.70s;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+    filter: invert(60%);
+}
+
+.box-u-base{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.fa-space-shuttle { color: black; font-size: 19px; width: 20px; padding: 0px 0px; }
+
+.btn-slide { 
+    position: relative;
+    display: inline-block; 
+    height: 50px;
+    width: 240px;
+    line-height: 50px;
+    margin: 25px 0;
+    padding: 0px;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,0.7);
+    background: linear-gradient(135deg, #9b0d9d 0%,#1ea4b0 100%);
+        }
+        
+.btn-slide:active { 
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0,0.7);
+    -webkit-transform: scale(0.98);
+    transform: scale(0.96); }
+    
+.btn-slide:hover { 
+    background: linear-gradient(-135deg, #9b0d9d 0%,#1ea4b0 100%); }
+        
+.btn-slide span.circle { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #e570e7;
+    position: absolute;
+    margin: 5px;
+    height: 40px; 
+    width: 40px;
+    top: 0; left: 0;
+    border-radius: 50%;
+    transition: all 1.5s ease;
+ }
+        
+.btn-slide:hover span.circle { 
+    left: 100%;
+    margin-left: -45px;
+    background-color: #fff;
+    color: #79f1fc; }
+        
+.btn-slide span.title { 
+    text-transform: uppercase;
+    position: absolute;
+    left: 85px;
+    font-size: 17px;
+    font-weight: bold;
+    color: #fff;
+    transition: all 1.5s linear; 
+ }
+        
+.btn-slide span.title-hover { opacity: 0; transition: 0.5s;}
+.btn-slide:hover span.title { opacity: 0; transition: 0.5s;}
+.btn-slide:hover span.title-hover { opacity: 1; left: 60px; transition: 0.5s;text-transform: uppercase;}   
+    
+
+.boxMoon{
+    margin-top: 5%;
+	margin-bottom: 5%;
+
+}
+
+.containerM, .button, .moon,.sml, .button .text{
+	position: relative;
+}
+
+.containerM{
+	margin: auto;
+	top: 0;
+	right: 0;
+	bottom:0;
+	left: 0;
+	width: 200px;
+	height: 200px;
+	/*background: linear-gradient(#ff0066 , #cc0052);*/
+}
+
+.moon{
+	width: 85px;
+	height: 85px;
+	background: #eee;
+	border-radius: 50%;
+	left: 75px;
+	top:-50px;
+	transition:all 1s ease-in-out;
+	z-index: 2;
+}
+.moon:before{
+	position: absolute;
+	content: '';
+	width: 20px;
+	height: 22px;
+	border-radius: 50%;
+	background: #ccc;
+  top: 25px;
+  left:12px;
+  box-shadow: 10px -20px 0 -4px #ccc, 4px 18px 0 -6px #ccc;
+}
+
+
+a:hover .moon{
+	left: 215px;
+	top: -85px;
+	box-shadow: 0px 0px 10px #f2f2f2;
+	transition: all 1s ease-in-out;
+}
+
+.button{
+	width: 250px;
+	height: 100px;
+	background: #173356 ;
+	box-shadow: 0px 0px 10px #fff;
+	border-radius: 2px;
+	z-index: 4;
+  top:45px;
+  left:-20px;
+	transition: all 1s ease-in-out;
+   
+}
+a:hover .button{
+	transition: all 1s ease-in-out;
+	box-shadow: 0px 2px 18px #eee;
+}
+a:hover .star{
+	animation: twinkle 1s infinite;
+}
+.star{
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	background: #fff;
+	border-radius: 50%;
+	z-index: 2;
+	opacity: 0.1;
+	top: 5px;
+	left: 10px;
+	box-shadow: 30px 20px 0px #fff, 
+				40px 60px 0px #fff
+				,40px 60px 0px #fff,
+				80px 50px 0px #fff,
+				120px 20px 0px #fff,
+				110px 60px 0px #fff,
+				120px 5px 0px #fff,
+				200px 5px 0px #fff,
+				210px 25px 0px #fff,
+				230px 50px 0px #fff,
+				170px 90px 0px #fff,
+				190px 74px 0px #fff,
+				140px 80px 0px #fff,
+				20px 90px 0px #fff,
+				40px 760px 0px #fff,
+				60px 70px 0px #fff,
+				80px 80px 0px #fff,
+				160px 20px 0px #fff;
+}
+.s2 {
+	position: absolute;
+	height: 3px ;
+	width: 3px;
+	border-radius: 50%;
+	background: #fff;
+	animation-delay: 0.5s;
+	box-shadow: 60px 5px 0px #fff, 
+				40px 30px 0px #fff,
+				10px 40px 0px #fff,
+				90px 40px 0px #fff,
+				100px 10px 0px #fff,
+				110px 5px 0px #fff,
+				7px 20px 0px #fff,
+				200px 50px 0px #fff,
+				180px 80px 0px #fff,
+				190px 15px 0px #fff;
+	top: 10px;
+}
+.s3{
+	position: absolute;
+	height: 1px ;
+	width: 1px;
+	border-radius: 50%;
+	background: #fff;
+	animation-delay: 0.9s;
+	box-shadow: 30px 130px 0px #fff,
+				 80px 95px 0px #fff
+				,120px 110px 0px #fff,
+				12px 100px 0px #fff,
+				25px 90px 0px #fff,
+				65px 140px 0px #fff,
+				125px 111px 0px #fff,
+				160px 120px 0px #fff,
+				160px -60px 0px #fff,
+				200px -48px 0px #fff,
+				225px -88px 0px #fff,
+				240px -49px 0px #fff;
+	top: 30px;
+}
+@keyframes twinkle{
+	50%{
+		opacity: 1;
+	}
+}
+.button .text{
+   
+	text-align:center;
+  font-weight:bold;
+	font-family:  "Sacramento", cursive;
+	font-size: 50px;
+    top: 15%;
+	left: 2px;
+	line-height: 70px;
+	margin: 15px auto;
+	transition: all 1px ease-in-out;
+	font-weight: bold;
+}
+
+.hidden-box{
+	visibility: hidden;
+}

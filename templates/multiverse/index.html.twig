@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MultiverseCorner{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/multiverseCorner.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1>Multiverse Corner</h1>
+
+<div class="containerz">
+	<div class="card">
+		<figure class="card__thumb">
+		 <img class="card__image" src="{{ asset('images/multiverse/multiverseChoices.jpg') }}" alt="MChoice"> 
+			<figcaption class="card__caption">
+				<h2 class="card__title">Trouves l'univers qui te correspond</h2>
+				<p class="card__snippet">Après un test tu sera orientez vers l'univers qui te conviend le mieux.</p>
+				<a href="{{ path('test_multiverse') }}" class="card__button">Test</a>
+			</figcaption>
+		</figure>
+	</div>
+
+	<div class="card">
+		<figure class="card__thumb">
+			<img  src="{{ asset('images/multiverse/multiverseJoin.jpg') }}" alt="MJoin" class="card__image">
+			<figcaption class="card__caption">
+				<h2 class="card__title">Rejoins directement un des univers</h2>
+				<p class="card__snippet">Tu connais déjà les dimensions et tu sais aussi ce que tu recherches.</p>
+				<a href="{{ path('cat') }}" class="card__button">Rejoindre</a>
+			</figcaption>
+		</figure>
+	</div>
+
+	<div class="card">
+		<figure class="card__thumb">
+			<img src="{{ asset('images/multiverse/multiverseCreate.jpg') }}" alt="Picture by Daniel Lincoln" class="card__image">
+			<figcaption class="card__caption">
+				<h2 class="card__title">Tu as des idées de création d'univers?</h2>
+				<p class="card__snippet">Tu souhaites donner vie à un univers que tu as en tête, tu es au bonne endroit!</p>
+				<a href="{{ path('page_new') }}" class="card__button">Créer</a>
+			</figcaption>
+		</figure>
+	</div>
+</div>
+{% endblock %}

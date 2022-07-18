@@ -1,0 +1,442 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Choice{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('css/univers/jeux.css') }}">
+
+{% endblock %}
+
+{% block body %}
+<h1>Univers du jeux</h1>
+<hr style="width:90%; background-color:white;">
+
+<div style="height:100%; width:100%; margin-bottom:6%">
+ <div class="carousel">
+    <div class="carousel__control">
+    </div>
+    <div class="carousel__stage">
+        <div class="spinner spinner--left">
+            <div class="spinner__face js-active" data-bg="#27323c">
+                <div class="content" data-type="iceland">
+                    <div class="content__left">
+                        <h1 >Jeux vidéo<br><span>Numérique</span></h1>
+                    </div>
+                    <div class="content__right">
+                        <div class="content__main">
+                            <p>“ La vie c'est comme un jeux vidéo, en suivant les règles, tu gagneras. ” </p>
+                        <div> 
+                            <a href="{{ path('jeuxvideo_multiverse') }}" class="btnx">
+                                <span class="text2">Text</span>
+                                <span class="flip-front">Voir</span>
+                                <span class="flip-back">Clique</span>
+                            </a>
+                        </div>
+                        
+                        </div>
+                        <h3 class="content__index">01</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="spinner__face" data-bg="#19304a">
+                <div class="content" data-type="china">
+                    <div class="content__left">
+                        <h1>Jeux de société<br><span>Physique</span></h1>
+                    </div>
+                    <div class="content__right">
+                        <div class="content__main">
+                            <p>“Le jeu n'a pas d'autre sens que lui même. C'est le vrai droit du jeu de tromper le trompeur.”</p>
+                            <a  href="#" class="btnx">
+                                <span class="text2">Text</span>
+                                <span class="flip-front">Voir</span>
+                                <span class="flip-back">Clique</span>
+                            </a>
+                        </div>
+                        <h3 class="content__index">02</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="spinner__face" data-bg="#2b2533">
+                <div class="content" data-type="usa">
+                    <div class="content__left">
+                        <h1>Jeux d'équipe<br><span>Collectif</span></h1>
+                    </div>
+                    <div class="content__right">
+                        <div class="content__main">
+                            <p>“On apprécie toujours un bon perdant ; surtout quand il fait partie de l'équipe adverse.”</p>
+                            <a href="#" class="btnx">
+                                <span class="text2">Text</span>
+                                <span class="flip-front">Voir</span>
+                                <span class="flip-back">Clique</span>
+                            </a>
+                        </div>
+                        <h3 class="content__index">03</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="spinner__face" data-bg="#312f2d">
+                <div class="content" data-type="peru">
+                    <div class="content__left">
+                        <h1>Jeux d'ambiance<br><span>Collectif</span></h1>
+                    </div>
+                    <div class="content__right">
+                        <div class="content__main">
+                            <p>“Les jeux d'ambiance encouragent l'interaction sociale. Ce sont généralement des jeux qui nécessitent beaucoup de participants. Heureusement, les règles d'un jeu d'ambiance tiennent généralement sur un post-it, ce qui facilite et encourage n'importe qui à rejoindre la partie.”</p>
+                            <a href="#" class="btnx">
+                                <span class="text2">Text</span>
+                                <span class="flip-front">Voir</span>
+                                <span class="flip-back">Clique</span>
+                            </a>
+                        </div>
+                        <h3 class="content__index">04</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+</div>
+
+
+<h2>Dernieres publications </h2>
+<hr style="width:70%; background-color:white;">
+
+
+<div class="container">
+  <div class="card-column column-0">
+    <div class="card card-color-0">
+      <div class="border"></div>
+     <img src="{{ asset('images/multiverse/jeux/classjeux.jpg') }}" alt="jeux idépendants" >
+      <h1>Classement jeux vidéos Indé de 2022</h1>
+    </div>
+    <div class="card card-color-2">
+      <div class="border"></div>
+  <img src="{{ asset('images/multiverse/jeux/jeusoir.jpg') }}" alt="jeux idépendants" >
+      <h1>Ce nouveau jeu sera parfait pour vos soirée !</h1>
+    </div>
+  </div>
+  <div class="card-column column-1">
+    <div class="card card-color-1">
+      <div class="border"></div>
+      <img src="{{ asset('images/multiverse/jeux/pigeon.jpg') }}" alt="jeux idépendants" >
+      <h1>Pigeon pigeon: duels délirants entre 2 équipes. </h1>
+    </div>
+    <div class="card card-color-3">
+      <div class="border"></div>
+      <img src="{{ asset('images/multiverse/jeux/escape.jpg') }}" alt="jeux idépendants" >
+      <h1>Faites votre propre Escape Game maison.</h1>
+    </div>
+  </div>
+</div>
+
+<div id="cover" class="cover"></div>
+
+<div id="open-content" class="open-content">
+  <a href="#" id="close-content" class="close-content"><span class="x-1"></span><span class="x-2"></span></a>
+  <img id="open-content-image" src="" />
+  <div class="text" id="open-content-text">
+  </div>
+</div>
+
+<div style="width:100vh; display:flex; justify-content:center; margin-bottom:9%; margin-top:-3%">
+    <a style="" href="#" class="btnx">
+        <span class="text2">Text</span>
+        <span class="flip-front">Voir plus</span>
+        <span class="flip-back">C'est parti !</span>
+    </a>
+</div>
+
+<h2>Membres de l'univers </h2>
+<hr style="width:70%; background-color:white;">
+
+
+<div class="galerie">
+
+        <section class="item" >  
+    <div class="row active-with-click">
+        <div >
+            <article class="material-card Red">
+                <h2>
+                    <span>Christopher Walken</span>
+                    <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        Acteur
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img width="100%" src="https://material-cards.s3-eu-west-1.amazonaws.com/thumb-christopher-walken.jpg">
+                    </div>
+                    <div class="mc-description">
+                        Il a joué dans plus de 100 films et émissions de télévision, dont The Deer Hunter, Annie Hall, la trilogie The Prophecy, The Dogs of War ...
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a class="fa fa-fw fa-plus-circle"></a>
+                    <a class="fa fa-fw fa-eye"></a>
+                    <a class="fa fa-fw fa-envelope"></a>
+                </div>
+            </article>
+        </div>  
+    </div>
+</section>
+
+
+
+        <section class="item" >  
+    <div class="row active-with-click">
+        <div >
+            <article class="material-card Red">
+                <h2>
+                    <span>Faker</span>
+                    <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        League of legend
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img width="100%" src="https://i.pinimg.com/550x/63/f9/ca/63f9ca734285e66821d348046fb151e6.jpg">
+                    </div>
+                    <div class="mc-description">
+                      Lee Sang-hyeok (en coréen 이상혁), connu sous le pseudonyme de Faker, est un joueur professionnel sud-coréen de League of Legends.
+                        Il est connu pour ses talents sur League of Legends et est considéré par beaucoup comme le meilleur joueur de tous les temps.
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a class="fa fa-fw fa-plus-circle"></a>
+                    <a class="fa fa-fw fa-eye"></a>
+                    <a class="fa fa-fw fa-envelope"></a>
+                </div>
+            </article>
+        </div>  
+    </div>
+</section>
+        
+
+        <section class="item" >  
+    <div class="row active-with-click">
+        <div >
+            <article class="material-card Red">
+                <h2>
+                    <span>PewDiePie</span>
+                    <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        Gamer / Vidéaste
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img width="100%" src="https://image.tmdb.org/t/p/original/pgIoaHSGiNSbnygpITqYKlcwxXv.jpg">
+                    </div>
+                    <div class="mc-description">
+                       "Ne sois pas une salade, sois le meilleur brocoli que tu puisses être."
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a class="fa fa-fw fa-plus-circle"></a>
+                    <a class="fa fa-fw fa-eye"></a>
+                    <a class="fa fa-fw fa-envelope"></a>
+                </div>
+            </article>
+        </div>  
+    </div>
+</section>
+
+
+
+        <section class="item" >  
+    <div class="row active-with-click">
+        <div >
+            <article class="material-card Red">
+                <h2>
+                    <span>JeannineXX62</span>
+                    <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        Pro-gameuse
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img width="100%" src="{{ asset('images/multiverse/jeux/mamie.jpg') }}">
+                    </div>
+                    <div class="mc-description">
+                       J'ai fait la guerre sur mon pc et dans la vrai vie alors que étais même pas née !
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a class="fa fa-fw fa-plus-circle"></a>
+                    <a class="fa fa-fw fa-eye"></a>
+                    <a class="fa fa-fw fa-envelope"></a>
+                </div>
+            </article>
+        </div>  
+    </div>
+</section>
+       
+
+    
+        <section class="item" >  
+    <div class="row active-with-click">
+        <div >
+            <article class="material-card Red">
+                <h2>
+                    <span>Boris Balviata</span>
+                    <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        Maitre du jeu
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img width="100%" src="https://i.pinimg.com/736x/b5/06/a8/b506a865fad43e9e95d817c0639d8d54--superman-superman-halloween-costume-ideas.jpg">
+                    </div>
+                    <div class="mc-description">
+                        Vous n'aurez qu'à vous immerger, je m'occupe du reste...
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a class="fa fa-fw fa-plus-circle"></a>
+                    <a class="fa fa-fw fa-eye"></a>
+                    <a class="fa fa-fw fa-envelope"></a>
+                </div>
+            </article>
+        </div>  
+    </div>
+</section>
+     
+
+       
+        <section class="item" >  
+    <div class="row active-with-click">
+        <div >
+            <article class="material-card Red">
+                <h2>
+                    <span>Arthus Goir</span>
+                    <strong>
+                        <i class="fa fa-fw fa-star"></i>
+                        Noob
+                    </strong>
+                </h2>
+                <div class="mc-content">
+                    <div class="img-container">
+                        <img width="100%" src="https://www.wipo.int/export/sites/www/wipo_magazine/images/en/2018/2018_01_art_7_1_400.jpg">
+                    </div>
+                    <div class="mc-description">
+                      Quelqu'un veut bien de moi dans sa guilde?
+                    </div>
+                </div>
+                <a class="mc-btn-action">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <div class="mc-footer">
+                    <h4>
+                        Social
+                    </h4>
+                    <a class="fa fa-fw fa-plus-circle"></a>
+                    <a class="fa fa-fw fa-eye"></a>
+                    <a class="fa fa-fw fa-envelope"></a>
+                </div>
+            </article>
+        </div>  
+    </div>
+</section>
+    
+
+    </div>
+
+
+<div style="height:100%; width:100%; z-index:10; position:relative; bottom:0">
+
+    <div class="wrapper">
+
+      <div class="cat_wrapper">
+        <div class="cat first_pose">
+          <div class="cat_head">
+            <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 76.4 61.2" >
+              <polygon class="eyes" points="63.8,54.1 50.7,54.1 50.7,59.6 27.1,59.6 27.1,54.1 12.4,54.1 12.4,31.8 63.8,31.8 "/>
+              <path d="M15.3,45.9h5.1V35.7h-5.1C15.3,35.7,15.3,45.9,15.3,45.9z M45.8,56.1V51H30.6v5.1H45.8z M61.1,35.7H56v10.2h5.1
+                V35.7z M10.2,61.2v-5.1H5.1V51H0V25.5h5.1V15.3h5.1V5.1h5.1V0h5.1v5.1h5.1v5.1h5.1v5.1c0,0,15.2,0,15.2,0v-5.1h5.1V5.1H56V0h5.1v5.1
+                h5.1v10.2h5.1v10.2h5.1l0,25.5h-5.1v5.1h-5.1v5.1H10.2z"/>
+            </svg>
+
+          </div>
+          <div class="body">
+            <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 91.7 40.8" >
+              <path class="st0" d="M91.7,40.8H0V10.2h5.1V5.1h5.1V0h66.2v5.1h10.2v5.1h5.1L91.7,40.8z"/>
+            </svg>
+
+            <div class="tail">
+              <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 25.5 61.1" >
+                <polygon class="st0" points="10.2,56 10.2,50.9 5.1,50.9 5.1,40.7 0,40.7 0,20.4 5.1,20.4 5.1,10.2 10.2,10.2 10.2,5.1 15.3,5.1 
+                  15.3,0 25.5,0 25.5,10.2 20.4,10.2 20.4,15.3 15.3,15.3 15.3,20.4 10.2,20.4 10.2,40.7 15.3,40.7 15.3,45.8 20.4,45.8 20.4,50.9 
+                  25.5,50.9 25.5,61.1 15.3,61.1 15.3,56 "/>
+              </svg>
+            </div>
+          </div>
+          
+          <div class="front_legs">
+            <div class="leg one">
+              <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 14 30.5" >
+                <polygon points="15.3,30.5 5.1,30.5 5.1,25.4 0,25.4 0,0 15.3,0 "/>
+              </svg>
+            </div>
+            <div class="leg two">
+              <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 14 30.5" >
+                <polygon points="15.3,30.5 5.1,30.5 5.1,25.4 0,25.4 0,0 15.3,0 "/>
+              </svg>
+            </div>  
+          </div>
+          
+          <div class="back_legs">
+            <div class="leg three">
+              <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 14 30.5" >
+                <polygon points="15.3,30.5 5.1,30.5 5.1,25.4 0,25.4 0,0 15.3,0 "/>
+              </svg>
+            </div>
+            <div class="leg four">
+              <svg x="0px" y="0px" width="100%" height="100%" viewBox="0 0 14 30.5" >
+                <polygon points="15.3,30.5 5.1,30.5 5.1,25.4 0,25.4 0,0 15.3,0 "/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<script src="{{ asset('js/universe/jeux.js') }}"></script>
+{% endblock %}
+

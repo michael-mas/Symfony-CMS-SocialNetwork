@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register | Portal{% endblock %}
+
+{% block body %}
+<div class="register-content">
+    {{ form_start(registrationForm, {
+        attr: {
+            class: 'reg-form'
+        }
+    }) }}
+        <div class="form-logo">
+            <img src="{{ asset('images/logo_multiverse2.png') }}" alt="Portal">
+        </div>
+        <hr>
+        <div class="form-body">
+            <div class="form-group">
+                {{ form_label(registrationForm.username) }}
+                {{ form_widget(registrationForm.username, {
+                    attr: {
+                        class: 'form-control'
+                    }
+                }) }}
+            </div>
+            
+            <div class="form-group">
+                {{ form_label(registrationForm.plainPassword) }}
+               
+                {{ form_widget(registrationForm.plainPassword, {
+                    attr: {
+                        class: 'form-control'
+                    }
+                }) }}
+                <div class="show-password material-icons">visibility_off</div>
+            </div>
+            <div class="form-group">
+            {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn btn-lg btn-primary">Inscription</button>
+        </div>
+    {{ form_end(registrationForm) }}
+</div>
+<script src="{{ asset('js/auth.js') }}"></script>
+{% endblock %}

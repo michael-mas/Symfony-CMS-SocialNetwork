@@ -1,0 +1,250 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | Multiverse{% endblock %}
+
+{% block body %}
+<div class="home-content">
+    <div class="home-content-inner">
+        
+    </div>
+</div>
+
+<script>
+    var page = 1;
+    var reachedEnd = false;
+    var isLogged = {{ app.user ? 1 : 0 }};
+
+    $(document).ready(function() {
+        //fetch posts from api
+        function fetchPosts(pg) {
+            $.ajax({
+                url: '{{ path("api_posts") }}',
+                type: 'POST',
+                data: {page: pg}
+            }).done(function(data) {
+                data.forEach(function(post) {
+                    if(post=='end'){
+                        reachedEnd = true;
+                        $('.home-content-inner').append('<div class="home-posts-end">Pas de publication supplémentaire</div>');
+                        return;
+                    }
+
+                    getImages = [];
+                    postImages = '';
+                    if(post['images']!=null){
+                        getImages = JSON.parse(post['images']);
+                        getImages.forEach(function(image,index) {
+                            postImages += (`
+                                <div class="item ${index==0?'active':''}">
+                                    <img src="${image}">
+                                </div>
+                                <span style="display:none">${moment.locale('fr')}</span>
+                            `);
+                        });
+                    }
+
+                    dateDiff = moment(moment()).diff(post['date'],"hours") > 24;
+
+                    postTemplate = `
+                        <div class="home-post post-full" id="${post['id']}">
+                            <div class="post-bar">
+                                <div class="author" id="${post['author']}">
+                                    <div class="author-pfp">
+                                        <img src="${post['author_pfp']}">
+                                    </div>
+                                    <div class="author-name">
+                                        ${post['author_username']}
+                                    </div>
+                                </div>
+                                <div class="post-meta">
+                                    <div class="post-date">
+                                        ${moment(post['date']).fromNow()}${dateDiff?',':''}
+                                    </div>
+                                    ${dateDiff ? `
+                                        <div class="post-time">
+                                            ${moment(post['date']).format('HH:mm')}
+                                        </div>
+                                    `:''}
+                                    ${post['status']==1?`
+                                        <div class="post-status">(Edited)</div>
+                                    `:``}
+                                </div>
+                            </div>
+                            <div class="post-contents">
+                                <div class="post-title">
+                                    ${post['title']}
+                                </div>
+                                <div class="post-body">
+                                    ${post['images']!=null?`
+                                        <div class="post-images-carousel">
+                                            <div class="carousel-inner">
+                                                ${postImages}
+                                            </div>
+                                            <div class="carousel-controls">
+                                                <a class="carousel-control-prev disabled">
+                                                    <span class="material-icons" aria-hidden="true">arrow_back</span>
+                                                </a>
+                                                <a class="carousel-control-next ${getImages.length<2 ? `disabled`:``}">
+                                                    <span class="material-icons" aria-hidden="true">arrow_forward</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    `:''}
+                                    <div class="post-body-text markdown">
+                                        ${md.render(post['content'])}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-footer">
+                                <div class="reactions">
+                                    <span class="upvote material-icons">${post['cuReaction']==1 ? `thumb_up`:`thumb_up_off_alt`}</span>
+                                    <span class="counter">${post['reactions']}</span>
+                                    <span class="downvote material-icons">${post['cuReaction']==-1 ? `thumb_down`:`thumb_down_off_alt`}</span>
+                                </div>
+                                <div class="comments">
+                                    <span class="comments-icon material-icons">comment</span>
+                                    <span class="comment-counter">${post['comments']}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    $('.home-content-inner').append(postTemplate);
+                });
+            }).fail(function(data) {
+                console.log(data);
+            });
+        } fetchPosts(page);
+
+        //fetch more posts if reached bottom
+        $(window).scroll(function() {
+            if(($(window).scrollTop() + $(window).height() == $(document).height()) && !reachedEnd) {
+                page++;
+                fetchPosts(page);
+            }
+        });
+
+        //open post on post-contents (except for carousel) click
+        $('.home-content-inner').on('click', '.post-contents', function(e) {
+            if($(e.target).parent().hasClass('carousel-control-prev') || $(e.target).parent().hasClass('carousel-control-next') || $(e.target).hasClass('carousel-control-prev') || $(e.target).hasClass('carousel-control-next')){
+                return;
+            }
+            postId = $(this).parent().attr('id');
+            window.location.href = '{{ path("post_show") }}/'+postId;
+        });
+
+        //open post on comments click
+        $('.home-content-inner').on('click', '.comments', function() {
+            postId = $(this).parent().parent().attr('id');
+            window.location.href = '{{ path("post_show") }}/'+postId;
+        });
+
+        //open user profile on author click
+        $('.home-content-inner').on('click','.author',function() {
+            authorId = $(this).attr('id');
+            window.location.href = '{{ path("user_show") }}/'+authorId;
+        });
+
+        //react to post
+        function reactToPost(postId, reaction) {
+            $.ajax({
+                url: '{{ path("api_react") }}',
+                type: 'POST',
+                data: {
+                    postId: postId, 
+                    reaction: reaction,
+                    type: 0
+                }
+            }).done(function(data) {
+                if(data['status']=='success'){
+                    $('#'+postId+' .counter').html(eval($('#'+postId+' .counter').html()) + reaction);
+                } else if(data['status']=='reaction_updated'){
+                    $('#'+postId+' .counter').html(eval($('#'+postId+' .counter').html()) + (reaction*2));
+                }
+            }).fail(function(data) {
+                alert('Something went wrong');
+            });
+        }
+
+        //upvote post
+        $('.home-content-inner').on('click', '.upvote', function() {
+            if(!isLogged){
+                window.location.href = '{{ path("app_login") }}';
+                return;
+            }
+
+            if($(this).html()!='thumb_up'){
+                reactToPost($(this).parent().parent().parent().attr('id'), 1);
+                $(this).html('thumb_up');
+                $(this).parent().find('.downvote').html('thumb_down_off_alt');
+            } else { //remove reaction
+                reactToPost($(this).parent().parent().parent().attr('id'), 0);
+                $(this).html('thumb_up_off_alt');
+                $(this).parent().parent().parent().find('.counter').html(eval($(this).parent().parent().parent().find('.counter').html()) - 1);
+            }
+        });
+
+        //downvote post
+        $('.home-content-inner').on('click', '.downvote', function() {
+            if(!isLogged){
+                window.location.href = '{{ path("app_login") }}';
+                return;
+            }
+
+            if($(this).html()!='thumb_down'){
+                reactToPost($(this).parent().parent().parent().attr('id'), -1);
+                $(this).html('thumb_down');
+                $(this).parent().find('.upvote').html('thumb_up_off_alt');
+            } else { //remove reaction
+                reactToPost($(this).parent().parent().parent().attr('id'), 0);
+                $(this).html('thumb_down_off_alt');
+                $(this).parent().parent().parent().find('.counter').html(eval($(this).parent().parent().parent().find('.counter').html()) + 1);
+            }
+        });
+
+
+        //carousel controls
+        $('.home-content-inner').on('click','.carousel-control-prev',function() {
+            let carousel = $(this).parent().parent().find('.carousel-inner');
+            if(carousel.children().length<2){
+                return;
+            }
+            let current = carousel.find('.active');
+            let prev = current.prev();
+            
+            current.removeClass('active');
+            prev.addClass('active');
+            $(this).parent().find('.carousel-control-next').removeClass('disabled');
+
+            //check if prev is the first
+            if(prev.prev().length==0){
+                $(this).addClass('disabled');
+            } else {
+                $(this).removeClass('disabled');
+            }
+        });
+        $('.home-content-inner').on('click','.carousel-control-next',function() {
+            let carousel = $(this).parent().parent().find('.carousel-inner');
+            if(carousel.children().length<2){
+                return;
+            }
+            let current = carousel.find('.active');
+            let next = current.next();
+
+            current.removeClass('active');
+            next.addClass('active');
+            $(this).parent().find('.carousel-control-prev').removeClass('disabled');
+
+            //check if next is the last
+            if(next.next().length==0){
+                $(this).addClass('disabled');
+            } else {
+                $(this).removeClass('disabled');
+            }
+        });
+            
+
+    });
+
+</script>
+
+{% endblock %}

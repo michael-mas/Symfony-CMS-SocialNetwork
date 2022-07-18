@@ -1,0 +1,527 @@
+/* Evolution */
+
+/* part 1 ADN*/
+
+body {
+  overflow-x: hidden !important; /* Hide scrollbars */
+}
+
+.containerCanvas{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+}
+
+.boxCanvas{
+    width: 50vh;
+    height: 50vh;
+    margin-left: 10%;
+}
+
+.textCanvas{
+    padding: 3%;
+    width: 50%;
+}
+
+canvas
+{
+    margin-right: 0.5%;
+    border: 2px solid transparent;
+}
+
+
+.div{
+    width:20%;
+    height:10px;
+    border-top:1px dashed white;
+    border-radius:20px;
+    border-bottom:none;
+    border-right:20px solid red;
+    border-left:20px solid blue;
+    margin-right:30px;
+    margin-left:120px;
+    margin-bottom:7px;
+}
+
+
+.div:nth-child(1){
+    animation:dna1 5s linear infinite 0s;
+}
+@keyframes dna1{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(2){
+    animation:dna2 5s linear infinite 0.2s;
+}
+@keyframes dna2{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(3){
+    animation:dna3 5s linear infinite 0.4s;
+}
+@keyframes dna3{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(4){
+    animation:dna4 5s linear infinite 0.6s;
+}
+@keyframes dna4{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(5){
+    animation:dna5 5s linear infinite 0.8s;
+}
+@keyframes dna5{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(6){
+    animation:dna6 5s linear infinite 1s;
+}
+@keyframes dna6{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(7){
+    animation:dna7 5s linear infinite 1.2s;
+}
+@keyframes dna7{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(8){
+    animation:dna8 5s linear infinite 1.4s;
+}
+@keyframes dna8{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(9){
+    animation:dna9 5s linear infinite 1.6s;
+}
+@keyframes dna9{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(10){
+    animation:dna10 5s linear infinite 1.8s;
+}
+@keyframes dna10{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(11){
+    animation:dna11 5s linear infinite 2s;
+}
+@keyframes dna11{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(12){
+    animation:dna12 5s linear infinite 2.2s;
+}
+@keyframes dna12{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(13){
+    animation:dna13 5s linear infinite 2.4s;
+}
+@keyframes dna13{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(14){
+    animation:dna1 5s linear infinite 2.6s;
+}
+@keyframes dna14{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(15){
+    animation:dna15 5s linear infinite 2.8s;
+}
+@keyframes dna15{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(16){
+    animation:dna16 5s linear infinite 3s;
+}
+@keyframes dna16{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(17){
+    animation:dna17 5s linear infinite 3.2s;
+}
+@keyframes dna17{
+    100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(18){
+animation:dna18 5s linear infinite 3.4s;
+}
+@keyframes dna18{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(19){
+animation:dna19 5s linear infinite 3.6s;
+}
+@keyframes dna19{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(20){
+animation:dna20 5s linear infinite 3.8s;
+}
+@keyframes dna20{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(21){
+animation:dna21 5s linear infinite 4s;
+}
+@keyframes dna21{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(22){
+animation:dna22 5s linear infinite 4.2s;
+}
+@keyframes dna22{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(23){
+animation:dna23 5s linear infinite 4.4s;
+}
+@keyframes dna23{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(24){
+animation:dna24 5s linear infinite 4.6s;
+}
+@keyframes dna24{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(25){
+animation:dna25 5s linear infinite 4.8s;
+}
+@keyframes dna25{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(26){
+animation:dna26 5s linear infinite 5s;
+}
+@keyframes dna26{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(27){
+animation:dna27 5s linear infinite 5.2s;
+}
+@keyframes dna27{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(28){
+animation:dna28 5s linear infinite 5.4s;
+}
+@keyframes dna28{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(29){
+animation:dna29 5s linear infinite 5.6s;
+}
+@keyframes dna29{
+100% {transform:rotateY(360deg);}
+}
+
+
+.div:nth-child(30){
+animation:dna30 5s linear infinite 5.8s;
+}
+@keyframes dna30{
+100% {transform:rotateY(360deg);}
+}
+
+/* Media Query ADN */
+
+@media screen and (max-width: 860px) {
+    .containerCanvas {
+      flex-direction: column;
+    }
+
+    .boxCanvas{
+        margin-left: 30%;
+    }
+
+    .textCanvas{
+        margin-top: 8%;
+        width: 100%;
+        text-align: center;
+    }
+    }
+
+@media screen and (max-width: 860px) {
+    .boxCanvas{
+        margin-left: 22%;
+    }
+    }
+
+@media screen and (max-width: 415px) {
+    .boxCanvas{
+        margin-left: 15%;
+    }
+    }
+    
+@media screen and (max-width: 415px) {
+    .boxCanvas{
+        margin-left: 10%;
+        margin-bottom: 30%;
+    }
+    }
+        
+
+
+/* part 2 Game of Life */
+
+#canvas1 {
+    cursor: pointer;
+    background-color: rgb(16, 15, 15);
+  }
+
+.containerCanvas1{
+    border: white 1px solid;
+    margin-bottom: 6%;
+}
+
+/* part 3 Biomorphs*/
+
+.containerCanvas2{
+    text-align:center;
+}
+
+#genome, #load {
+    color: black;
+    margin-bottom: 3%;
+    margin-top: 1.5%;
+}
+
+.canvas2{
+    background-color: white;
+}
+
+.canvas2:hover{
+    filter:drop-shadow(1px 1px 8px rgb(255, 0, 0));
+    border: 2px solid rgb(255, 0, 0);
+  }
+
+
+/* Contionnement Section */
+
+textarea:focus, input:focus{outline: none;}
+*:focus {outline: none;}
+
+
+
+
+h1,h2,h3,h4,h5,h6 {
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-style: normal; 
+  line-height: 1.3;
+}
+
+h1 {font-size: 30px;}
+h2 {font-size: 22px;}
+h3 {font-size: 18px;}
+h4 {font-size: 16px;}
+h5 {font-size: 14px;}
+h6 {font-size: 12px;}
+
+.normal {font-weight: 400;}
+.semibold {font-weight: 600;}
+.bold {font-weight: 700;}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.3;
+  font-size: 16px;
+}
+
+b, strong {font-weight: bold;}
+i {font-style: italic;}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {-webkit-appearance: none;}
+
+.title-wrapper {
+  width: 100%;
+  float: left;
+  padding: 50px 0 0 0;
+  box-sizing: border-box;
+}
+.title-wrapper h1 {
+  font-size: 40px;
+  color: #f1f1f1;
+  text-align: center;
+  font-weight: 400;
+}
+
+#blog-wrapper {
+  width: 100%;
+  float: left;
+  padding: 50px 0 200px 0;
+  box-sizing: border-box;
+}
+.blog {
+  width: 960px;
+  max-width: 90%;
+  min-height: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.blog-post-1,
+.blog-post-2,
+.blog-post-3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  cursor: pointer;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+.blog-post-1.z,
+.blog-post-2.z,
+.blog-post-3.z {z-index: 10;}
+
+.contain-blog1,
+.contain-blog2,
+.contain-blog3 { opacity: 0%; transition: 2s;}
+
+.contain-blog1.x,
+.contain-blog2.x,
+.contain-blog3.x { opacity: 100%; transition: 2s;}
+
+.blog-post-1 {
+  clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 50% 100%);
+  background-image: url(https://i.ytimg.com/vi/dNYjj5brGZw/maxresdefault.jpg);
+}
+.showblog1 .blog-post-1 {
+  clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
+}
+
+.blog-post-2 {
+  clip-path: polygon(3% 0%, 50% 93%, 50% 93%, 97% 0%);
+  background-image: url(https://images4.alphacoders.com/122/1229860.jpg);
+}
+.showblog2 .blog-post-2 {
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+}
+
+.blog-post-3 {
+  clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 50% 100%);
+  background-image: url(https://geo.img.pmdstatic.net/fit/https.3A.2F.2Fi.2Epmdstatic.2Enet.2Fgeo.2F2021.2F12.2F27.2Fb8eb21cc-8570-4628-b151-8ff310c6e185.2Ejpeg/1280x720/background-color/ffffff/quality/70/des-chercheurs-reconstituent-levolution-de-la-banquise-depuis-100-ans.jpg);
+}
+.showblog3 .blog-post-3 {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.blog-copy {
+  width: 70%;
+  padding: 100px 0 0 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.blog-copy h2 {
+  font-size: 38px;
+  color: #FFFFFF;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+  text-shadow: 0px 0px 20px #000000;
+}
+.blog-copy p {
+  font-size: 16px;
+  color: #FFFFFF;
+  text-shadow: 0px 0px 20px #000000;
+}
+
+.btnAdapte{
+    background-color: #141414;
+  border: 1px solid rgba(54, 54, 54, 0.6);
+  font-weight: 600;
+  position: relative;
+  outline: none;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 45px;
+  width: 130px;
+  opacity: 1;
+}
+
+.btnAdapte:hover{
+    background-color: #ff0707;
+    border: 1px solid rgba(180, 5, 5, 0.6);
+    color: white;
+}
+
+.blogTxt{
+    font-weight: bold;
+     -webkit-text-stroke: 0.4px rgb(0, 0, 0);
+}

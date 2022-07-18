@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign in | Portal{% endblock %}
+
+{% block body %}
+<div class="login-content">
+    <form class="login-form" method="post">
+        <div class="form-logo">
+            <img src="{{ asset('images/logo_multiverse2.png') }}" alt="Portal">
+        </div>
+        <hr>
+        {% if error %}
+            <div class="auth-alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <div class="form-body">
+            <div class="form-group">
+                <label for="inputUsername">Pseudonyme</label>
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                <div class="show-password material-icons">visibility_off</div>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <label id="rememberMe" for="remember_me">Remember me</label>
+            <input type="checkbox" id="remember_me" name="_remember_me">
+
+            <button class="btn btn-lg btn-primary" type="submit">
+                Connexion
+            </button>
+        </div>
+    </form>
+</div>
+<script src="{{ asset('js/auth.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,564 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multiverse_Dons{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/dons.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<h1>Univers des dons</h1>
+<hr style="width:90%">
+
+<h2>Derniers dons</h2>
+<hr style="width:70%">
+
+<div id="cards">  
+
+<figure class="card card--normal">
+  <div class="card__image-container">
+    <img width="100%" src="https://www.pngmart.com/files/6/LCD-Television-PNG-Transparent-Picture.png" alt="Eevee" class="card__image">   
+  </div>
+  
+  <figcaption class="card__caption">
+    <h1 class="card__name">TV cathodique</h1>
+
+    <h3 class="card__type">
+      electronique
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+<figure class="card card--water">
+  <div class="card__image-container">
+    <img width="100%" src="{{asset('images/multiverse/dons/dons2.png')}}" alt="Vaporeon" class="card__image">   
+  </div>
+  
+   <figcaption class="card__caption">
+    <h1 class="card__name">Conserves de légumes</h1>
+
+    <h3 class="card__type">
+      nourriture
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+<figure class="card card--electric">
+  <div class="card__image-container">
+    <img width="100%" src="{{asset('images/multiverse/dons/console.png')}}" alt="Jolteon" class="card__image">   
+  </div>
+  
+ <figcaption class="card__caption">
+    <h1 class="card__name">Console</h1>
+
+    <h3 class="card__type">
+      Electronique
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+<figure class="card card--fire">
+  <div class="card__image-container">
+    <img width="100%" src="{{asset('images/multiverse/dons/gateau.png')}}" alt="Jolteon" class="card__image">   
+  </div>
+  
+ <figcaption class="card__caption">
+    <h1 class="card__name">Gateau au chocolat</h1>
+
+    <h3 class="card__type">
+      Nourriture
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+<figure class="card card--psychic">
+  <div class="card__image-container">
+    <img width="55%" src="{{asset('images/multiverse/dons/fauteuil.png')}}" alt="Jolteon" class="card__image">   
+  </div>
+  
+ <figcaption class="card__caption">
+    <h1 class="card__name">Fauteuil</h1>
+
+    <h3 class="card__type">
+      Meubles
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+<figure class="card card--dark">
+  <div class="card__image-container">
+    <img width="100%" src="{{asset('images/multiverse/dons/statue.png')}}" alt="Jolteon" class="card__image">   
+  </div>
+  
+ <figcaption class="card__caption">
+    <h1 class="card__name">Sculpture Gorille moderne</h1>
+
+    <h3 class="card__type">
+      Decorations
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+<figure class="card card--grass">
+  <div class="card__image-container">
+    <img width="50%" src="{{asset('images/multiverse/dons/jeux.png')}}" alt="Jolteon" class="card__image">   
+  </div>
+  
+ <figcaption class="card__caption">
+    <h1 class="card__name">Jeux de société</h1>
+
+    <h3 class="card__type">
+      Medias
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+<figure class="card card--ice">
+  <div class="card__image-container">
+    <img width="100%" src="{{asset('images/multiverse/dons/disque.png')}}" alt="Jolteon" class="card__image">   
+  </div>
+  
+ <figcaption class="card__caption">
+    <h1 class="card__name">Album des Dark Bear</h1>
+
+    <h3 class="card__type">
+      Medias
+    </h3>
+
+    <table class="card__stats">
+      <tbody><tr>
+        <th>Model</th>
+        <td>###</td>
+      </tr>
+      <tr>
+        <th>Année d'achat</th>
+        <td>###</td>
+      </tr>
+      
+      <tr>
+        <th>Etat</th>
+        <td>###</td>
+      </tr>
+
+      <tr>
+        <th>Infos</th>
+        <td>###</td>
+      </tr>
+    </tbody></table>
+    
+    <div class="card__abilities">
+      <h4 class="card__ability">
+      <span class="card__label">Donné par</span>
+        Jacques Dack
+      </h4>
+      <h4 class="card__ability">
+        <span class="card__label">Méthode de recepetion</span>
+        Venir chercher
+      </h4>
+    </div>
+    <div id="wrapper">
+  <a href="#" class="my-super-cool-btn">
+    <div class="dots-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <span style="color:black">Voir!</span>
+  </a>
+</div>
+  </figcaption>
+</figure>
+
+
+
+<h2>Categories de dons</h2>
+<hr style="width:70%">
+
+
+<div class="grid">
+<label class="card2"><input class="card__input" type="checkbox" />
+        <div class="card__body">
+            <div class="card__body-cover"><img class="card__body-cover-image" src="{{asset('images/multiverse/dons/meubles.png')}}" /><span class="card__body-cover-checkbox"> <svg class="card__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg></span></div>
+            <header class="card__body-header">
+                <h2 class="card__body-header-title">Meubles</h2>
+                <p class="card__body-header-subtitle">Meubles</p>
+            </header>
+        </div>
+    </label>
+    <label class="card2"><input class="card__input" type="checkbox" />
+        <div class="card__body">
+            <div class="card__body-cover"><img class="card__body-cover-image" src="{{asset('images/multiverse/dons/electromenager.png')}}" /><span class="card__body-cover-checkbox"> <svg class="card__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg></span></div>
+            <header class="card__body-header">
+                <h2 class="card__body-header-title">Electronique</h2>
+                <p class="card__body-header-subtitle">Frigo and co</p>
+            </header>
+        </div>
+    </label><label class="card2"><input class="card__input" type="checkbox" />
+        <div class="card__body">
+            <div class="card__body-cover"><img class="card__body-cover-image" src="{{asset('images/multiverse/dons/conserves.png')}}" /><span class="card__body-cover-checkbox"> <svg class="card__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg></span></div>
+            <header class="card__body-header">
+                <h2 class="card__body-header-title">Nourritures</h2>
+                <p class="card__body-header-subtitle">Nourritures</p>
+            </header>
+        </div>
+    </label><label class="card2"><input class="card__input" type="checkbox" />
+        <div class="card__body">
+            <div class="card__body-cover"><img class="card__body-cover-image" src="{{asset('images/multiverse/dons/medias.png')}}" /><span class="card__body-cover-checkbox"> <svg class="card__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg></span></div>
+            <header class="card__body-header">
+                <h2 class="card__body-header-title">Medias</h2>
+                <p class="card__body-header-subtitle">Medias</p>
+            </header>
+        </div>
+    </label><label class="card2"><input class="card__input" type="checkbox" />
+        <div class="card__body">
+            <div class="card__body-cover"><img class="card__body-cover-image" src="{{asset('images/multiverse/dons/decorations.png')}}" /><span class="card__body-cover-checkbox"> <svg class="card__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg></span></div>
+            <header class="card__body-header">
+                <h2 class="card__body-header-title">Décorations</h2>
+                <p class="card__body-header-subtitle">Décorations</p>
+            </header>
+        </div>
+    </label><label class="card2"><input class="card__input" type="checkbox" disabled="disabled" />
+        <div class="card__body">
+            <div class="card__body-cover"><img class="card__body-cover-image" src="https://i.ibb.co/WDwmPy5/other.png" /><span class="card__body-cover-checkbox"> <svg class="card__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg></span></div>
+            <header class="card__body-header">
+                <h2 class="card__body-header-title">Autres</h2>
+                <p class="card__body-header-subtitle">Autres</p>
+            </header>
+        </div>
+    </label></div>
+
+<h2>Rechercher un dons</h2>
+<hr style="width:70%; margin-bottom:5%">
+
+<div class="body">
+<label>
+  <input type="text" required>
+  <ul>
+    <li x>c</li>
+    <li y>h</li>
+    <li u>e</li>
+    <li p>r</li>
+    <li c>c</li>
+    <li h>h</li>
+    <li e>e</li>
+    <li r>r</li>
+  </ul>
+</label>  <i style="margin-left:3%; background-color:black;" class="material-icons">search</i>
+</div>
+{% endblock %}

@@ -1,0 +1,190 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle publication{% endblock %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+{# NAVIGATION LATERALE #}
+
+<navi>
+    <a title="Créer univers" href="#first"><i class="far fa-file-alt"></i></a>
+    <a title="Créer categorie" href="#second"><i class="fas fa-newspaper"></i></a>
+    <a title="Voir pages" href="{{ path('pages.list.alls') }}"><i class="fas fa-binoculars"></i></a>
+    <a title="Widget" href="{{ path('widget_new') }}"><i class="fas fa-hat-wizard"></i></a>
+    <a title="Accueil" href=""><i class="fas fa-home"></i></a>
+</navi>
+
+{# ACCEUIL #}
+
+<div class= 'containerY'>
+   <h1 style="text-align:center">Bienvenue au créateur d'univers</h1>
+   <hr style="width:100%">
+  <div class="wrapper">
+    <div class="typing-demo">
+      Vous avez sur votre gauche la navigation latéral ou se trouve les différentes étapes de la confection d'un univers:
+    </div>
+
+    <div id="box-hidden">
+    <h2 id="text-hidden">Création d'un catégorie</h2>
+    <br>
+    <p id="text-hidden2">Créer un nom de catégorie et son slug (un nom de réferencement).</p>
+    <p id="text-hidden3">Elle sera ensuite soumis à l'administrateur qui la validera pour qu'elle puisse être utiliser. </p>
+    </div>
+
+     <div id="box-hidden2">
+    <h2 id="text-hidden-2">Création d'un widget</h2>
+    <br>
+    <p id="text-hidden2-2">Créer un nom de widget.</p>
+    <p id="text-hidden3-2">Ensuite glisser les composants que vous souhaiter mettre en place sur votre page. </p>
+    </div>
+
+    <div id="box-hidden3">
+    <h2 id="text-hidden-3">Création de la page</h2>
+    <br>
+    <p id="text-hidden2-3">Créer un nom de page.</p>
+    <p id="text-hidden3-3">Ensuite le contenu de texte souhaiter (jusqu'à deux). </p>
+    <p id="text-hidden4-3">Puis le widget avec ses composents. </p>
+    <p id="text-hidden5-3">Et enfin l'image principale. </p>
+    </div>
+
+</div>
+</div>
+
+{# CREATION PAGE #}
+
+<div class= 'containerZ'> 
+    <section id= 'first'>
+        <div class="title-form">
+        <h1>Formulaire de création de page</h1>
+        <hr style="width:100%">
+        </div>
+
+        {# MODAL TEMPLATE DE BASE #}
+
+        <div class="overlay">
+            <div class="modal">
+            <a class="closes-modal btn-close">
+            <img class="cross" src="http://cdn3.iconfinder.com/data/icons/iconic-1/32/x_alt-128.png" alt="X" />
+            </a>
+            <a class="open-modal2 btn-template">
+            <p class="nav-template">Template moderne</p>
+            </a>
+             <a class="open-modal3 btn-template">
+            <p class="nav-template2">Template Expérimental</p>
+            </a>
+            <h1 style="text-align:center; color:black">Template de base</h1>
+            <main class="main">
+            <header class="section menu">Barre de navigation</header>
+            <div class="section hero">Image principale</div>
+            <div class="section feature-1">Boutton de retour</div>
+            <div class="section feature-2">Titre et categorie</div>
+            <div class="section feature-3">Nom du créateur</div>
+            <div class="section content-text">Texte</div>
+            <div class="section widget1">Widget 1</div>
+            <div class="section widget2">Widget 2</div>
+            <div class="section foot">Footer</div>
+            </main>
+            </div>
+        </div>
+
+        {# MODAL TEMPLATE MODERNE #}
+
+        <div class="overlay2">
+            <div class="modal">
+            <a class="closes-modal2 btn-close">
+            <img class="cross" src="http://cdn3.iconfinder.com/data/icons/iconic-1/32/x_alt-128.png" alt="X" />
+            </a>
+            <a class="open-modal btn-template">
+            <p class="nav-template">Template de base</p>
+            </a>
+            <a class="open-modal4 btn-template">
+            <p class="nav-template2">Template experimental</p>
+            </a>
+            <h1 style="text-align:center; color:black;">Template moderne</h1>
+            <main class="main2">
+            <header class="section menu">Barre de navigation</header>
+            <div class="section hero2">Titre - Categorie - Créateur</div>
+            <div class="section feature-1-2">Image principale</div>
+            <div class="section content-text2">Texte</div>
+            <div class="section widget1-2">Widget 1</div>
+            <div class="section content-text2-2">Texte</div>
+            <div class="section widget2-2">Widget 2</div>
+            <div class="section foot2">Footer</div>
+            </main>
+            </div>
+        </div>
+
+        {# MODAL TEMPLATE EXPERIMENTAL #}
+
+        <div class="overlay3">
+            <div class="modal">
+            <a class="closes-modal3 btn-close">
+            <img class="cross" src="http://cdn3.iconfinder.com/data/icons/iconic-1/32/x_alt-128.png" alt="X" />
+            </a>
+            
+            <a class="open-modal5 btn-template">
+            <p class="nav-template">Template de base</p>
+            </a>
+            <a class="open-modal6 btn-template">
+            <p class="nav-template2">Template moderne</p>
+            </a>
+            <h1 style="text-align:center; color:black">Template experimental</h1>
+            <main class="main3">
+            <header class="section menu">Barre de navigation</header>
+            <div class="section hero3">Titre - Categorie - Créateur - Image</div>
+            <div class="section content-text3">Texte</div>
+            <div class="section widget1-3">Widget 1</div>
+            <div class="section content-text2-3">Texte</div>
+            <div class="section widget2-3">Widget 2</div>
+            <div class="section foot3">Footer</div>
+            </main>
+            </div>
+        </div>
+
+        {# SECTION FORMULAIRE PAGE #}
+
+        <div class="post-new-content">
+
+        {# MESSAGE SUCCES #}
+
+            <p style="text-align:center; font-weight:bold;">
+            {% for success in app.flashes('success') %}
+            {{ success }}
+            {% endfor %}
+            </p>
+        
+        {# FORMULAIRE PAGE #}
+
+            <div class="post-form-bottom">
+                {{ form_start(form) }}
+                    {# BOUTON TEMPLATE #}
+                    <a class="post-md-help">
+                        <span class="material-icons">help</span>
+                        <span class="md-help-text">Organisation des templates</span>
+                    </a>
+
+                    {{ form_widget(form, {'attr': {'class': 'form'}}) }}
+                    <div id="image-holder"></div>
+                    <button type="submit" class="btn btn-primary btnC">Créer une page</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+  
+    <section style="height:135vh;" id='second'>
+    {% include 'multiverse/fragment/categorie_form.html.twig' %}
+    </section>
+
+    {{ parent() }}
+
+</div>
+
+<script src="https://kit.fontawesome.com/d5fba335cd.js" crossorigin="anonymous"></script>
+<script src="{{ asset('js/universe/create.js') }}"></script>
+{% endblock %}

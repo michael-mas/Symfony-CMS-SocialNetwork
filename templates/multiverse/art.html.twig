@@ -1,0 +1,187 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Art{% endblock %}
+
+{% block stylesheets %}
+ 
+<link rel="stylesheet" href="{{ asset('css/univers/art.css') }}">
+
+{% endblock %}
+
+{% block body %}
+<h1>Univers de l'art</h1>
+<hr style="width:90%; background-color:white;">
+
+<div  class="scroll">
+
+ <figure title="Sample Image">
+	<img src="https://uploads0.wikiart.org/images/leonardo-da-vinci.jpg!Portrait.jpg" alt="sample image" />
+	<figcaption>Leonard de Vinci</figcaption>
+</figure>
+
+<figure title="Sample Image">
+	<img src="http://peika.bg/pictures/22641_650__3.jpg" alt="sample image" />
+	<figcaption>Le repas</figcaption>
+</figure>
+
+<figure title="Sample Image">
+	<img src="http://www.ibiblio.org/wm/paint/auth/vinci/ermine.jpg" alt="sample image" />
+	<figcaption>La dame à l'hermine</figcaption>
+</figure>
+
+<figure title="Sample Image">
+	<img src="https://www.kazoart.com/blog/wp-content/uploads/2019/05/Salvador-Dali-persistance-de-la-memoire-1931.jpg" alt="sample image" />
+	<figcaption>La persistance de la mémoire</figcaption>
+</figure>
+
+<figure title="Sample Image">
+	<img src="https://www.repro-tableaux.com/kunst/sandro_botticelli/die-geburt-der-venus-auch-die-schaumgeborene-oder-la-nascita-de-venere-2.jpg" alt="sample image" />
+	<figcaption>La naissance de Venus</figcaption>
+</figure>
+
+<figure title="Sample Image">
+	<img src="https://pbs.twimg.com/media/B4-8GDtIgAAjjdQ.jpg" alt="sample image" />
+	<figcaption>El Conde de Kandinsky</figcaption>
+</figure>
+
+<figure title="Sample Image">
+	<img src="https://www.kazoart.com/blog/wp-content/uploads/2018/05/grantwood.jpg" alt="sample image" />
+	<figcaption>American Gothic</figcaption>
+</figure>
+</div>
+
+
+<h2 style="margin-top:5%;">Les gallerie de nos membres</h2>
+<hr style="width:70%; background-color:white;margin-bottom:3%">
+
+<div class="band">
+  <div class="item-1">
+    <a href="{{ path('gallery1_multiverse') }}" class="card">
+      <div class="thumb" style="background-image: url(https://tinydesign.co.uk/gallery/gallery-img/portrait.jpg);"></div>
+      <article>
+        <h1>Gallerie 3D pur CSS</h1>
+        <p>Une salle avec différentes oeuvres faites en CSS pur .</p>
+        <span>Ben Evans</span>
+      </article>
+    </a>
+  </div>
+  <div class="item-2">
+    <a href="{{ path('gallery2_multiverse') }}" class="card">
+      <div class="thumb" style="background-image: url('{{asset('images/multiverse/art/parallax.jpg')}}');"></div>
+      <article>
+        <h1>Voyage par le parallax</h1>
+        <p>Un voyage à travers un parallax et le tout en Scrollant .</p>
+        <span>Harry Brignull</span>
+      </article>
+    </a>
+  </div>
+  <div class="item-3">
+    <a href="{{ path('gallery3_multiverse') }}" class="card">
+      <div class="thumb" style="background-image: url('{{asset('images/multiverse/art/minion.jpg')}}');"></div>
+      <article>
+        <h1>Emma le Minion</h1>
+        <p>Un Minion pas comme les autres! </p>
+        <span>Kale</span>
+      </article>
+    </a>
+  </div>
+  <div class="item-4">
+    <a href="{{ path('gallery4_multiverse') }}" class="card">
+      <div class="thumb" style="background-image: url('{{asset('images/multiverse/art/postApo.jpg')}}');"></div>
+      <article>
+        <h1>Dark Red city</h1>
+        <p>Une ville Cyber-Apocalytique en 3D avec Three.js .</p>
+        <span>Kezz Bracey</span>
+      </article>
+    </a>
+  </div>
+  <div class="item-5">
+    <a href="{{ path('gallery5_multiverse') }}" class="card">
+      <div class="thumb" style="background-image: url('{{asset('images/multiverse/art/home.jpg')}}');"></div>
+      <article>
+        <h1>Architecte 3D CSS et JS</h1>
+        <p>Une belle maison en 3D .</p>
+        <span>Ricardo Oliva Alonso</span>
+      </article>
+    </a>
+  </div>
+  <div class="item-6">
+    <a href="{{ path('gallery6_multiverse') }}" class="card">
+      <div class="thumb" style="background-image: url('{{asset('images/multiverse/art/cat.jpg')}}');"></div>
+      <article>
+        <h1>Petit Chat !</h1>
+        <p>Un petit chat souhaitant jouer avec la belotte de laine .</p>
+        <span>Karim Maaloul</span>
+      </article>
+    </a>
+  </div>
+  <div class="item-7">
+    <a href="https://threejs.org/examples/#webgl_animation_keyframes" class="card">
+      <div class="thumb" style="background-image: url('{{asset('images/multiverse/art/shopgrossery.jpg')}}');"></div>
+      <article>
+        <h1>Petit Tokyo</h1>
+        <p>Une animation en Three.js .</p>
+        <span>Glen Fox</span>
+      </article>
+    </a>
+  </div>
+</div>
+
+
+<h2>Créer votre chef d'oeuvre</h2>
+<hr style="width:90%; background-color:white;">
+
+
+<div class="body">
+<div class="controls">
+    <h3>Forme:</h3>
+    <div class='lightBorder' >
+    <p><input type="radio" name="shape" value="line" checked="checked"> Ligne</p>
+    <p><input type="radio" name="shape" value="rect"> Rectangle</p>
+    <p><input type="radio" name="shape" value="circle"> Cercle</p>
+    <p><input type="radio" name="shape" value="square"> Carré</p>
+    <p><input type="radio" name="shape" value="ellipse"> Ellipse</p>
+    <p><input type="radio" name="shape" value="polygon"> Polygone</p>
+  </div>
+    <h3>Type de ligne:</h3>
+    <div class='lightBorder'>
+    <p><label>Largeur: <input id='lineWidth' type='range' step='1' min="1" max="200" value="4"></label></p>
+    <p>Fin de ligne:</p> 
+    <p><input name="lineCap" value="round" type='radio' checked="checked">arrondie</p>
+    <p><input name="lineCap" value="square" type='radio'>carré</p>
+    <p><input name="lineCap" value="butt" type='radio'>arrière</p>
+
+  </div>
+  <h3>Couleurs:</h3>
+    <div class='lightBorder'>
+
+    <!-- color -->
+    <p><label>Couleur de remplissage: <input id='fillColor' type='color' step='1' value="#24B0D5"></label></p>
+    <p><label>Couleur de contour: <input id='strokeColor' type='color' step='1'> </label></p>
+    <p><label>Couleur de fond:<input id='backgroundColor' type='color' step='1' value="#ffffff"></label></p>
+    <span>*Changer la couleur de fond supprime le dessin!</span>
+  </div>
+    <div class='lightBorder'>
+    <!-- polygon sides -->
+    <p><label>Côtés du polygone: <input id='polygonSides' type='range' step='1' min="3" max="12"></label></p>
+
+  </div>
+
+  <form>
+  <h3>Textes:</h3> <input type="text" id="textInput"/>
+  </form>
+
+    <!-- fill or no fill, you decide -->
+    <p><label>Remplir: <input id='fillBox' type='checkbox' checked='checked'></label></p>
+    <p><label style="font-size:12px;">XOR: <input id='xor' type='checkbox'></label></p>
+
+    <button type="button" class="button-error pure-button" id="clearCanvas" name="button">Effacer le dessin</button>
+  </div>
+  <canvas id="canvas" width="750" height="840"></canvas>
+</div>
+
+<h4 class="responsive-warning">Pas encore adapté à ce type d'écran !</h4>
+
+<script src="{{ asset('js/universe/art.js') }}"></script>
+{% endblock %}
+

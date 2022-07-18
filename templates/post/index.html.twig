@@ -1,0 +1,466 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+
+<div class="post-content">
+    <div class="post-view post-full" id="{{ post.id }}">
+        <div class="post-bar">
+            <div class="author" id="{{ post.author }}">
+                <div class="author-pfp">
+                    <img src="{{ authorPfp }}">
+                </div>
+                <div class="author-name">
+                    {{ author }}
+                </div>
+            </div>
+            <div class="post-meta">
+                {% if post.status==1 %}
+                    <div class="post-status">(Edited)</div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="post-contents">
+            <div class="post-title">
+                {{ post.title }}
+            </div>
+            <div class="post-body">
+                {% if post.images %} 
+                    <div class="post-images-carousel">
+                        <div class="carousel-inner" >
+                            {% for image in post.images %}
+                                <div class="item{% if loop.index==1 %} active{% endif %}">
+                                    <img src="{{ image }}" alt="{{loop.index}}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="carousel-controls">
+                            <a class="carousel-control-prev" style="display:none">
+                                <span class="material-icons" aria-hidden="true">arrow_back</span>
+                            </a>
+                            <a class="carousel-control-next" style="display:none">
+                                <span class="material-icons" aria-hidden="true">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="post-body-text markdown">
+                </div>
+            </div>
+        </div>
+        <div class="post-footer">
+            <div class="post-reactions{% if not app.user %} disabled{% endif %}">
+                <span class="upvote material-icons">{% if cuReaction == 1 %}thumb_up{% else %}thumb_up_off_alt{% endif %}</span>
+                <span class="counter">{{ reactions }}</span>
+                <span class="downvote material-icons">{% if cuReaction == -1 %}thumb_down{% else %}thumb_down_off_alt{% endif %}</span>
+            </div>
+            <div class="post-comments">
+                <span class="comments-icon material-icons">comment</span>
+                <span class="comment-counter">{{ comments }}</span>
+            </div>
+            {% if cuIsAuthor %}
+                <div class="post-manage">
+                    <a href="{{ path('post_edit', {'id': post.id}) }}"><span class="material-icons">edit</span></a>
+                    <a href="{{ path('post_delete', {'id': post.id}) }}"><span class="material-icons">delete</span></a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if app.user %}
+        <div id="new-comment">
+            <div class="new-c-top">
+                Commenter en tant que <a href="{{ path('user_show') }}">{{ app.user.username }}</a>
+            </div>
+            <div class="new-c-bottom">
+                <textarea id="new-comment-content" name="content" placeholder="Entrer un commentaire..."></textarea>
+                <button id="new-comment-submit" class="btn btn-primary">Commenter</button>
+            </div>
+        </div>
+    {% endif %}
+
+    <div id="comments-wrapper">
+        <h3>Commentaires</h3>
+        <div class="comments">
+        </div>
+    </div>
+</div>
+
+<script>
+    var postId = {{ post.id }};
+    var isLogged = {{ app.user ? 1 : 0 }};
+    var postDate = "{{ post.date|date('Y-m-d H:i:s') }}";
+    var postContent = `{{ post.content|e('js') }}`;
+    var comments = [];
+
+    $(document).ready(function() {
+        //process date
+        function processDate() {
+            dateDiff = moment(moment()).diff(postDate,"hours") > 24;
+            template = `
+                <span style="display:none">${moment.locale('fr')}</span>
+                <div class="post-date">
+                    ${moment(postDate).fromNow()}${dateDiff?',':''}
+                </div>
+                ${dateDiff ? `
+                    <div class="post-time">
+                        ${moment(postDate).format('HH:mm')}
+                    </div>
+                `:''}
+            `;
+            $(".post-meta").prepend(template);
+        } processDate();
+
+        //process content
+        function processContent() {
+            let result = md.render(postContent);
+            $(".post-body-text").html(result);
+        } processContent();
+
+        //carousel
+        function carousel() {
+            let carousel = $('.carousel-inner');
+
+            if(carousel.children().length < 2) return;
+ 
+            $('.carousel-control-next').show();
+
+            $('.carousel-control-next').click(function() {
+                let current = $('.carousel-inner').find('.active');
+                let next = current.next();
+
+                current.removeClass('active');
+                next.addClass('active');
+                $('.carousel-control-prev').show();
+
+                //check if next is the last one
+                if(next.is(':last-child')){
+                    $('.carousel-control-next').hide();
+                } else {
+                    $('.carousel-control-next').show();
+                }
+            });
+
+            $('.carousel-control-prev').click(function() {
+                let current = $('.carousel-inner').find('.active');
+                let prev = current.prev();
+
+                current.removeClass('active');
+                prev.addClass('active');
+                $('.carousel-control-next').show();
+
+                //check if prev is the first one
+                if(prev.is(':first-child')){
+                    $('.carousel-control-prev').hide();
+                } else {
+                    $('.carousel-control-prev').show();
+                }
+            });
+        } carousel();
+        
+        //get comments
+        function getComments() {
+            $.ajax({
+                url: '{{ path('api_comments') }}',
+                type: 'POST',
+                data: {
+                    postId: postId
+                },
+            }).done(function(data) {
+                if(data.length <= 0){
+                    $('.comments').append('<p>Pas de commentaires :(</p>');
+                    return;
+                }
+
+                data.forEach(function(comment, index) {
+                    if(comment['isAuthor']){
+                        manage = `
+                            <div class="comment-management">
+                                <a class="edit-btn"><span class="material-icons">edit</span></a>
+                                <a class="delete-btn"><span class="material-icons">delete</span></a>
+                            </div>
+                        `;
+                    } else manage = '';
+
+                    dateDiff = moment(moment()).diff(comment.date,"hours") > 24;
+
+                    comments[comment.id] = comment.content;
+                    
+                    let commentHtml = `
+                        <div class="comment" id="comment-${index}" comment="${comment['id']}">
+                            <div class="comment-top">
+                                <div class="comment-author" uid="${comment.uid}">
+                                    <div class="author-pfp">
+                                        <img src="${comment['author_pfp']}" alt="${comment['author_username']}">
+                                    </div>
+                                    <div class="author-name">${comment['author_username']}</div>
+                                </div>
+                                <div class="comment-meta">
+                                    <div class="comment-date">
+                                        ${moment(comment['date']).fromNow()}${dateDiff?',':''}
+                                    </div>
+                                    ${dateDiff ? `
+                                        <div class="comment-time">
+                                            ${moment(comment['date']).format('HH:mm')}
+                                        </div>
+                                    `:''}
+                                    ${comment['status']==1?`
+                                        <div class="comment-status">(Edited)</div>
+                                    `:``}
+                                </div>
+                            </div>
+                            <div class="comment-content markdown">${md.render(comment['content'])}</div>
+                            <div class="comment-bottom">
+                                <div class="comment-reactions${isLogged ? '' : ' disabled' }">
+                                    <span class="upvote material-icons">${comment['cuReaction']==1 ? 'thumb_up' : 'thumb_up_off_alt'}</span>
+                                    <span class="counter">${comment['reactions']}</span>
+                                    <span class="downvote material-icons">${comment['downvote']==-1 ? 'thumb_down' : 'thumb_down_off_alt'}</span>
+                                </div>
+                                ${manage}
+                            </div>
+                        </div>
+                    `;
+
+                    $('.comments').append(commentHtml);
+                });
+            });
+        } getComments();
+        
+        //add comment
+        $('#new-comment-submit').click(function() {
+            let comment = $('#new-comment-content').val();
+
+            if(comment.length < 1){
+                alert('Please enter a comment!');
+                return;
+            }
+
+            $.ajax({
+                url: '{{ path('api_comment') }}',
+                type: 'POST',
+                data: {
+                    postId: postId,
+                    action: 'add',
+                    comment: comment
+                },
+            }).done(function(data) {
+                if(data['status'] == 'success'){
+                    $('.comments').html('');
+                    getComments();
+                } else {
+                    alert(data['error']);
+                }
+            }).fail(function(data) {
+                alert('Something went wrong');
+            });
+
+            $('#new-comment-content').val('');
+        });
+
+        //edit comment
+        $('.comments').on('click', '.edit-btn', function() {
+            let comment = $(this).parent().parent().parent();
+            let commentId = comment.attr('comment');
+            let content = comments[commentId];
+
+            comment.html(`
+                <div class="comment-management">
+                    <span class="edit-comment-submit material-icons">save</span>
+                    <span class="cancel-comment-submit material-icons">clear</span>
+                </div>
+                <textarea class="edit-comment-content" placeholder="Enter a comment...">${content}</textarea>
+            `);
+
+            $('.edit-comment-submit').click(function() {
+                let newContent = $(this).parent().parent().find('.edit-comment-content').val();
+
+                if(newContent.length < 1){
+                    alert('Please enter a comment!');
+                    return;
+                }
+
+                $.ajax({
+                    url: '{{ path('api_comment') }}',
+                    type: 'POST',
+                    data: {
+                        postId: postId,
+                        action: 'edit',
+                        commentId: commentId,
+                        comment: newContent
+                    },
+                }).done(function(data) {
+                    if(data['status'] == 'success'){
+                        $('.comments').html('');
+                        getComments();
+                    } else {
+                        alert(data['error']);
+                    }
+                }).fail(function(data) {
+                    alert('Something went wrong');
+                });
+            });
+
+            $('.cancel-comment-submit').click(function() {
+                $('.comments').html('');
+                getComments();
+            });
+        });
+       
+        
+        $('.comments').on('click', '.delete-btn', function() {
+            let comment = $(this).parent().parent();
+            let commentId = comment.attr('comment');
+
+            $.ajax({
+                url: '{{ path('api_comment') }}',
+                type: 'POST',
+                data: {
+                    postId: postId,
+                    action: 'del',
+                    commentId: commentId
+                },
+            }).done(function(data) {
+                if(data['status'] == 'success'){
+                    comment.remove();
+                } else {
+                    alert(data['error']);
+                }
+            }).fail(function(data) {
+                alert('Something went wrong');
+            });
+        });
+    
+        //react to post
+        function reactToPost(reaction) {
+            $.ajax({
+                url: '{{ path('api_react') }}',
+                type: 'POST',
+                data: {
+                    postId: postId,
+                    reaction: reaction,
+                    type: 0
+                }
+            }).done(function(data) {
+                if(data['status'] == 'success'){
+                    $('.post-reactions .counter').html(eval($('.post-reactions .counter').html()) + reaction);
+                } else if (data['status'] == 'reaction_updated') {
+                    $('.post-reactions .counter').html(eval($('.post-reactions .counter').html()) + (reaction*2));
+                }
+            }).fail(function(data) {
+                alert('Something went wrong');
+            });
+        }
+
+        //upvote post
+        $('.upvote').click(function() {
+            if(!isLogged){
+                window.location.href = '{{ path("app_login") }}';
+                return;
+            }
+
+            if($(this).html() != 'thumb_up'){
+                reactToPost(1);
+                $(this).html('thumb_up');
+                $('.downvote').html('thumb_down_off_alt');
+            } else { //remove reaction
+                reactToPost(0);
+                $(this).html('thumb_up_off_alt');
+                $('.post-reactions .counter').html(eval($('.post-reactions .counter').html()) - 1);
+            }
+        });
+
+        //downvote post
+        $('.downvote').click(function() {
+            if(!isLogged){
+                window.location.href = '{{ path("app_login") }}';
+                return;
+            }
+
+            if($(this).html() != 'thumb_down'){
+                reactToPost(-1);
+                $(this).html('thumb_down');
+                $('.upvote').html('thumb_up_off_alt');
+            } else { //remove reaction
+                reactToPost(0);
+                $(this).html('thumb_down_off_alt');
+                $('.post-reactions .counter').html(eval($('.post-reactions .counter').html()) + 1);
+            }
+        });
+
+        //react to comment
+        function reactToComment(commentId, reaction) {
+            $.ajax({
+                url: '{{ path('api_react') }}',
+                type: 'POST',
+                data: {
+                    postId: commentId,
+                    reaction: reaction,
+                    type: 1
+                }
+            }).done(function(data) {
+                console.log(data);
+                if(data['status'] == 'success'){
+                    $(`.comment[comment='${commentId}'] .comment-reactions .counter`).html(eval($(`.comment[comment='${commentId}'] .comment-reactions .counter`).html()) + reaction);
+                } else if (data['status'] == 'reaction_updated') {
+                    $(`.comment[comment='${commentId}'] .comment-reactions .counter`).html(eval($(`.comment[comment='${commentId}'] .comment-reactions .counter`).html()) + (reaction*2));
+                }
+            }).fail(function(data) {
+                alert('Something went wrong');
+            });
+        }
+
+        //upvote comment
+        $('.comments').on('click', '.upvote', function() {
+            if(!isLogged){
+                window.location.href = '{{ path("app_login") }}';
+                return;
+            }
+
+            let comment = $(this).parent().parent().parent();
+            let commentId = comment.attr('comment');
+            console.log(commentId);
+            if($(this).html() != 'thumb_up'){
+                reactToComment(commentId, 1);
+                $(this).html('thumb_up');
+                $(this).parent().find('.downvote').html('thumb_down_off_alt');
+            } else { //remove reaction
+                reactToComment(commentId, 0);
+                $(this).html('thumb_up_off_alt');
+                $(this).parent().find('.counter').html(eval($(this).parent().find('.counter').html()) - 1);
+            }
+        });
+
+        //downvote comment
+        $('.comments').on('click', '.downvote', function() {
+            if(!isLogged){
+                window.location.href = '{{ path("app_login") }}';
+                return;
+            }
+
+            let comment = $(this).parent().parent().parent();
+            let commentId = comment.attr('comment');
+            if($(this).html() != 'thumb_down'){
+                reactToComment(commentId, -1);
+                $(this).html('thumb_down');
+                $(this).parent().find('.upvote').html('thumb_up_off_alt');
+            } else { //remove reaction
+                reactToComment(commentId, 0);
+                $(this).html('thumb_down_off_alt');
+                $(this).parent().find('.counter').html(eval($(this).parent().find('.counter').html()) + 1);
+            }
+        });
+
+        //open post author profile
+        $('.author').click(function() {
+            window.location.href = '{{ path("user_show", { "id": post.author }) }}';
+        });
+
+        //open comment author profile
+        $('.comments').on('click', '.comment-author', function() {
+            let authorId = $(this).attr('uid');
+            window.location.href = '{{ path("user_show") }}/' + authorId;
+        });
+    });
+</script>
+{% endblock %}

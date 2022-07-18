@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Adaptation{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/adaptation.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<h1>L'univers de l'adaptation</h1>
+<hr style="width:100%">
+
+<img width="100%" src="{{asset('images/multiverse/adaptation/evolution.jpg')}}" alt="">
+
+<hr style="width:100%">
+
+<h1 style="font-size:50px;">Evolution</h1>
+
+<h1>Biologie</h1>
+<hr style="width:60%; margin-bottom:3%">
+
+<div class="containerCanvas">
+<div class="boxCanvas">
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+<div class="div"></div>
+</div>
+<div class="textCanvas">
+<p style="margin-left:4%; padding:3%;">L'acide désoxyribonucléique, ou ADN, est une macromolécule biologique présente dans presque toutes les cellules ainsi que chez de nombreux virus.</p>
+<p style="margin-left:4%; padding:3%;">L'ADN contient toute l'information génétique, appelée génome, permettant le développement, le fonctionnement et la reproduction des êtres vivants.</p>
+</div>
+</div>
+
+<h1>Le jeu de la vie</h1>
+<hr style="width:60%; margin-bottom:3%;">
+<p style=" margin-bottom:3%; padding:3%;">Le Jeu de la vie est un « jeu à zéro joueur », puisqu'il ne nécessite aucune intervention du joueur lors de son déroulement. Il s’agit d’un automate cellulaire, un modèle où chaque état conduit mécaniquement à l’état suivant à partir de règles préétablies.</p>
+
+<div class="containerCanvas1">
+<canvas id="canvas1">
+</div>
+
+
+<div class="containerCanvas2">
+
+<h1>Biomorphs</h1>
+<hr style="width:60%; margin-bottom:3%">
+<h3>Inspiré par Richard Dawkins</h3>
+<p> Les biomorphs sont des créatures numériques très simples.
+Elles ont été initialement inventées par le biologiste Richard Dawkins dans un programme appelé "l'horloger aveugle". 
+Il les appela "biomorphs" en reprenant le terme utilisé par Desmond Morris pour décrire les formes animales de ses peintures surréalistes.</p>
+<p style="margin-bottom:2%; font-weight:bold;">Cliques pour les faire évoluer!</p>
+<div id="biomorphs"></div>
+<label for='genome'>Le génome du Biomorph:</label>
+<input type="text" id="genome">
+<button id="load">Charger un génome</label>
+
+</div>
+
+
+<hr style="width:100%">
+
+<h1>Conditonnement</h1>
+
+<hr style="width:100%">
+
+<div class="title-wrapper">
+  <p style="text-align:center;">Les êtres vivants peuvent s'adapter à énormement d'environnement et éléments appartenant à ce dernier.</p>
+   <p style="text-align:center;">Cliques sur un élement pour voir un article sur le sujet !</p>
+  </div>
+  
+  <div id="blog-wrapper">
+
+    <div class="blog">
+
+      <div class="blog-post-1">
+        <div class="blog-copy">
+          <h2>Forêt</h2>
+          <div class="contain-blog1">
+          <p class="blogTxt"> La forêt est essentielle pour le bien-être de l'homme. Elle est aussi vitale pour sa survie. Alain Persuy a pris la plume pour signer un plaidoyer en faveur des forêts.</p>
+          <p class="blogTxt">Lorsque nous prononçons le mot de forêt, ce sont des sons qui nous parviennent : le bruit des branches qui craquent, le tambourinage du pic épeiche sur un tronc, des chants d'oiseaux qui semblent se répondre... Une symphonie incroyablement apaisante.</p>
+          <div style="display:flex; justify-content:center"><a class="btnAdapte" href="">En lire plus</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-post-2">
+        <div class="blog-copy">
+          <h2>Désert</h2>
+          <div class="contain-blog2">
+          <p class="blogTxt">Le désert d’Atacama représente l’un des environnements les plus rudes de la planète. Pourtant, plusieurs espèces de plantes y vivent.</p>
+          <p class="blogTxt"> Des chercheurs viennent d’identifier les gènes leur permettant de survivre dans cet environnement extrême.</p>
+          <div style="display:flex; justify-content:center"><a class="btnAdapte" href="">En lire plus</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-post-3">
+        <div class="blog-copy">
+          <h2>Banquise</h2>
+            <div class="contain-blog3">
+            <p class="blogTxt"> Les animaux qui vivent sur la banquise des pôles Nord et Sud sont
+            déjà équipés pour vivre dans le froid extrême sans problème. Comme tous les autres animaux ,
+            ils sont adaptés à leur environnement.
+            </p>
+            <p class="blogTxt">Le pôle Nord est plus chaud que
+            le pôle Sud, mais dans ces deux
+            régions du monde, le froid est
+            glacial. La température du pôle Sud
+            peut descendre jusqu'à -90°c, c'est
+            cinq fois plus froid que dans ton
+            congélateur.
+            </p>
+          <div style="display:flex; justify-content:center"><a class="btnAdapte" href="">En lire plus</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>  
+
+  </div>
+
+
+<script src="{{ asset('js/universe/adaptation.js') }}"></script>
+
+{% endblock %}

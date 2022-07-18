@@ -1,0 +1,50 @@
+
+
+<title>{% block title %}Multivers_Gallery4{% endblock %}</title>
+{% block stylesheets %}
+ 
+<link rel="stylesheet" href="{{ asset('css/univers/gallery4.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid header disable-selection">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col text-center">
+          <h1><strong>Ville Post-Apocaltptique 3D</strong></h1>
+          <p class="small">– Revenir au rouge –</p>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+<div class="container-fluid fixed-bottom footer">
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-danger mb-2" href="{{ path('art_multiverse') }}" role="button">Revenir en arrière</a>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/89/three.min.js"></script>
+<script src="https://github.com/mrdoob/three.js/blob/master/src/constants.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+<script src="{{ asset('js/universe/gallery4.js') }}"></script>
+
+{% endblock %}
+

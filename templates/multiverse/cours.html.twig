@@ -1,0 +1,210 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multiverse_Cours{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/cours.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<h1>Univers des cours</h1>
+<hr style="width:90%">
+
+<h2>Informatique</h2>
+<hr style="width:70%">
+
+<h3 style="margin-top:5%">Dactylographie</h3>
+
+<div id="wrapper">
+  <div id="cell">
+    <div id="left">
+      <h1 class="cardTitle">Entraînes toi !</h1>
+      <h2>Optimises ton taux de réussite</h2>
+      <div id="intro">
+        Petit outil peu sophistiqué pour apprendre
+        <br/>
+        Voir d'autres cours:
+        <a href="">Cliques</a>
+      </div>
+    </div>
+    <div id="right">
+      <div id="lesson"></div>
+      <input id="input-lifo" placeholder="commences à écrire ici " type="text">/</input>
+      <div id="score"></div>
+      <label for="lesson-select" id="lesson-label">Cours</label>
+      <select id="lesson-select">
+        <option selected="selected" value="random-full">Complètement aléatoire</option>
+        <option value="random-letter">Lettres aléatoires</option>
+        <option value="random-spechial">Caractères spéciaux</option>
+        <option value="wikipedia">Article wikipedia</option>
+        <option value="random-yz">Z/Y</option>
+        <option value="random-homerow">Accueil</option>
+        <option value="random-toprow">En tête</option>
+        <option value="random-bottomrow">Pied de page</option>
+        <option value="random-homerow-toprow">Première partie</option>
+        <option value="random-homerow-bottomrow">Fin partie</option>
+        <option value="random-numberspechials">Nombres spéciaux</option>
+      </select>
+      <button id="reload"></button>
+    </div>
+  </div>
+</div>
+
+
+<h4>Code</h4>
+
+
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+
+<div class="body" translate="yes" >
+  <section id="container"></section>
+<section id="output"></section>
+</div>
+
+
+<h4>Ressources</h4>
+
+<div class="librairy">
+
+<div class="component">
+				<ul class="align">
+					<li>
+						<figure class='book'>
+							<!-- Front -->
+							<ul class='hardcover_front'>
+								<li>
+									<div class="coverDesign blue">
+										<h1>CSS</h1>
+										<p>Cours</p>
+									</div>
+								</li>
+								<li></li>
+							</ul>
+							<!-- Pages -->
+							<ul class='page'>
+								<li></li>
+								<li>
+									<a class="btn" href="#">Lire</a>
+								</li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+							<!-- Back -->
+							<ul class='hardcover_back'>
+								<li></li>
+								<li></li>
+							</ul>
+							<ul class='book_spine'>
+								<li></li>
+								<li></li>
+							</ul>
+						</figure>
+					</li>
+				</ul>
+			</div>
+
+            
+<div class="component">
+				<ul class="align">
+					<li>
+						<figure class='book'>
+							<!-- Front -->
+							<ul class='hardcover_front'>
+								<li>
+									<div class="coverDesign dark-blue">
+										<h1>PHP</h1>
+										<p>Cours</p>
+									</div>
+								</li>
+								<li></li>
+							</ul>
+							<!-- Pages -->
+							<ul class='page'>
+								<li></li>
+								<li>
+									<a class="btn" href="#">Lire</a>
+								</li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+							<!-- Back -->
+							<ul class='hardcover_back'>
+								<li></li>
+								<li></li>
+							</ul>
+							<ul class='book_spine'>
+								<li></li>
+								<li></li>
+							</ul>
+						</figure>
+					</li>
+				</ul>
+			</div>
+
+            <div class="component">
+				<ul class="align">
+					<li>
+						<figure class='book'>
+							<!-- Front -->
+							<ul class='hardcover_front'>
+								<li>
+									<div class="coverDesign yellow">
+										<h1 style="color:black;">JAVA</h1>
+										<p style="color:black;">Cours</p>
+									</div>
+								</li>
+								<li></li>
+							</ul>
+							<!-- Pages -->
+							<ul class='page'>
+								<li></li>
+								<li>
+									<a class="btn" href="#">Lire</a>
+								</li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>
+							<!-- Back -->
+							<ul class='hardcover_back'>
+								<li></li>
+								<li></li>
+							</ul>
+							<ul class='book_spine'>
+								<li></li>
+								<li></li>
+							</ul>
+						</figure>
+					</li>
+				</ul>
+			</div>
+
+</div>
+
+<h2>Bricolage</h2>
+<hr style="width:70%">
+<div style="margin-bottom:4%;">
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At id est neque libero recusandae molestias eius culpa possimus odio excepturi veritatis natus dolor corrupti nisi, beatae quae reiciendis itaque et.</p>
+
+</div>
+
+
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/111863/Tone.min.js'></script>
+<script id="rendered-js" src="{{ asset('js/universe/cours.js') }}"></script>
+
+{% endblock %}

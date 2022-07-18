@@ -1,0 +1,27 @@
+ <div class="title-form">
+ <h1>Formulaire de création d'une catégorie</h1>
+ <hr style="width:100%">
+ </div>
+
+ <div class="post-new-content">
+
+    <div class="post-form-bottom">
+        {{ form_start(form2) }}
+
+            <p style="text-align:center; font-weight:bold;">
+            {% for success2 in app.flashes('success2') %}
+            {{ success2 }}
+            {% endfor %}
+
+            {{ form_widget(form2) }}
+
+            <button type="submit" class="btn btn-primary btnC">Créer une catégorie</button>
+
+        {{ form_end(form2) }}
+    </div>
+</div>
+
+
+
+
+

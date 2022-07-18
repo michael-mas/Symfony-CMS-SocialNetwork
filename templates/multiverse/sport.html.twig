@@ -1,0 +1,177 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Sport{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/sport.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{% block body %}
+
+<h1>L'univers du sport</h1>
+<hr style="width:100%">
+
+<div style="width:200vh;background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)), url('{{asset('images/multiverse/sport/bg.jpg')}}');background-repeat:no-repeat;background-size:cover">
+    <div style="min-height: 400px"><h3 style="font-weight:bold;">Dépasser vos limites physique et sculpter votre corps selon vos inspirations  !</h3>
+    </div>
+</div>
+<hr style="width:100%">
+
+<h1>Menu</h1>
+
+  <div class="containerw">
+    <div class="card">
+      <h2>Fitness</h2>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      <p>Svelte et athlétique</p>
+      <div class="pic"></div>
+      
+      <button>
+      </button>
+    </div>
+      <div class="card card2">
+      <h2>Bodybulding</h2>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+      <p>Enorme et sec</p>
+      <div class="pic"></div>
+      <button>
+      </button>
+    </div>
+  </div>
+
+<hr style="width:100%">
+
+<h1>Les membres</h1>
+
+<div style="margin-bottom:3%" class="containerM">
+  <div class="cardM">
+    <img src="https://medias.lequipe.fr/img-photo-jpg/toshisuke-kanasawa-bodybuilder-a-81-ans-igorkopcek/1500000000997205/41:1,698:439-1200-800-75/a29e3.jpg" alt="Person" class="card__image">
+    <p class="card__name">Docteur BodyBackWang</p>
+    <div class="grid-container">
+
+      <div class="grid-child-posts">
+        156 Posts
+      </div>
+
+      <div class="grid-child-followers">
+        1012 J'aime
+      </div>
+
+    </div>
+   <hr style="width:100%">
+    <p style="text-align:center; height:80px">« Les trente premières années se passent à ne pas pouvoir se réveiller, les trente suivantes à ne pas pouvoir s'endormir. »</p>
+    <hr style="width:100%">
+    <button class="btn draw-border">Ajouter en ami</button>
+    <button class="btn draw-border">Message</button>
+
+  </div>
+  <div class="cardM">
+    <img src="https://cdn.shopify.com/s/files/1/0570/7802/2327/articles/ronnie_coleman_the_hungry_elite_fitness_academy_badreddine_1024x1024.jpg?v=1640368283" alt="Person" class="card__image">
+    <p class="card__name">Donnie SuperGlueMan</p>
+    <div class="grid-container">
+
+      <div class="grid-child-posts">
+        305 Post
+      </div>
+
+      <div class="grid-child-followers">
+        2643 J'aime
+      </div>
+
+    </div>
+    <hr style="width:100%">
+    <p style="text-align:center; height:80px">"La force ne vient pas de la victoire. Ce sont vos efforts qui développent vos forces"</p>
+    <hr style="width:100%">
+    <button class="btn draw-border">Ajouter en ami</button>
+    <button class="btn draw-border">Message</button>
+  </div>
+  <div class="cardM">
+    <img src="https://www.informelles.media/wp-content/uploads/2021/11/sissy.jpg" alt="Person" class="card__image">
+    <p class="card__name">Wiwih Cymoi</p>
+    <div class="grid-container">
+
+      <div class="grid-child-posts">
+        902 Posts
+      </div>
+
+      <div class="grid-child-followers">
+        1300 J'aime
+      </div>
+
+    </div>
+     <hr style="width:100%">
+    <p style="text-align:center; height:80px">« Prends soin de ton corps. C'est le seul endroit où tu es obligé de vivre. »</p>
+    <hr style="width:100%">
+    <button class="btn draw-border">Ajouter en ami</button>
+    <button class="btn draw-border">Message</button>
+  </div>
+</div>
+<hr style="width:100%">
+
+<h1>Dernières publications</h1>
+
+<div style="margin-bottom:3%" class="container">
+  <div>
+    <div>
+      <article class="blog-card">
+        <div class="blog-card__background">
+          <div class="card__background--wrapper">
+            <div class="card__background--main" style="background-image: url('https://sovos.com/fr/wp-content/uploads/sites/7/2019/03/sovos-bodybuilding.jpg');">
+              <div class="card__background--layer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card__head">
+          <span class="date__box">
+            <span class="date__day">11</span>
+            <span class="date__month">JANVIER</span>
+          </span>
+        </div>
+        <div class="blog-card__info">
+          <h5 style="color:black">Le décalage de notre vision du corps avec la réalité</h5>
+          <p>
+            <a href="#" class="icon-link"><span style="color:black; font-size:16px" class="material-icons">draw</span><span style="color:black; margin-right:2%"> Tony Jevéhalassale</span></a>
+            <a href="#" class="icon-link"><span style="color:black; font-size:16px" class="material-icons">comment</span><span style="color:black">150</span></a>
+          </p>
+          <p style="color:black">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque vero libero voluptatibus earum? Alias dignissimos quo cum, nulla esse facere atque, blanditiis doloribus at sunt quas, repellendus vel? Et, hic!</p>
+          <a href="#" class="btn2 btn--with-icon"></i><span style="color:black"> En voir plus</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom:3%" class="container">
+  <div>
+    <div>
+      <article class="blog-card">
+        <div class="blog-card__background">
+          <div class="card__background--wrapper">
+            <div class="card__background--main" style="background-image: url('https://nieulgymloisirs.fr/wp-content/uploads/2019/10/Strecthing-post_2019_1200_4-810x338.jpg');">
+              <div class="card__background--layer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card__head">
+          <span class="date__box">
+            <span class="date__day">24</span>
+            <span class="date__month">DECEMBRE</span>
+          </span>
+        </div>
+        <div class="blog-card__info">
+          <h5 style="color:black">L'importance des étirements le soir d'un entrainement</h5>
+          <p>
+            <a href="#" class="icon-link"><span style="color:black; font-size:16px" class="material-icons">draw</span><span style="color:black; margin-right:2%"> Olivia Elastaque</span></a>
+            <a href="#" class="icon-link"><span style="color:black; font-size:16px" class="material-icons">comment</span><span style="color:black">70</span></a>
+          </p>
+          <p style="color:black">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque vero libero voluptatibus earum? Alias dignissimos quo cum, nulla esse facere atque, blanditiis doloribus at sunt quas, repellendus vel? Et, hic!</p>
+          <a href="#" class="btn2 btn--with-icon"></i><span style="color:black"> En voir plus</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

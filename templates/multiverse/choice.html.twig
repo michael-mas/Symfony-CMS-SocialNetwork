@@ -1,0 +1,265 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Multivers_Choice{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/multiverseChoice.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+{% if app.request.requestUri == "/choice?match=body" %}
+
+{% include 'multiverse/fragment/button_back.html.twig' %}
+<h1>Univers lié à l'enveloppe physique</h1>
+<hr style="width:90%">
+       <section class="cards-wrapper">
+  <div class="card-grid-space">
+    <div class="num">C-01</div>
+    <a class="card" href="{{ path('sport_multiverse') }}" style="--bg-img: url('{{asset('images/multiverse/sportUniverse.gif')}}')">
+      <div>
+        <h1>Sport</h1>
+        <p>Un univers ou les connaissances liées au perferctionnement de nos corp terrestes y sont partager</p>
+        <div class="date">Dimension X0-32</div>
+        <div class="tags">
+          <div class="tag">Corps</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">C-02</div>
+    <a class="card" href="{{ path('nutrition_multiverse') }}" style="--bg-img: url('{{asset('images/multiverse/nutrition.gif')}}')">
+      <div>
+        <h1>Nutrition</h1>
+        <p>Les habitants de cet univers y ont la plus grande longévité de tout le multivers et une santé de fer </p>
+        <div class="date">Dimension Y0-A2</div>
+        <div class="tags">
+          <div class="tag">Corps</div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="card-grid-space">
+    <div class="num">C-03</div>
+    <a class="card" href="{{ path('adaptation_multiverse') }}" style="--bg-img: url('{{asset('images/multiverse/adaptation.gif')}}')">
+      <div>
+        <h1>Adaptation</h1>
+        <p>Les peuples qui y règnent sont connus pour prendre des bains de lave et porter des chaussures avec des piques vers la plante des pieds </p>
+        <div class="date">Dimension XX-44</div>
+        <div class="tags">
+          <div class="tag">Corps</div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+        
+{% elseif app.request.requestUri == "/choice?match=spirit" %}
+
+    {% include 'multiverse/fragment/button_back.html.twig' %}
+    <h1>Univers lié à l'esprit</h1>
+    <hr style="width:90%">
+        <div class="container-fluid">
+    <div class="item">
+        <figure>
+            <div class="media" style="background-image:url('{{asset('images/multiverse/brain.jpg')}}')"></div>
+            <figcaption><svg viewBox="0 0 200 200" version="1.1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <mask id="mask" x="0" y="0" width="100%" height="100%">
+                            <rect id="alpha" x="0" y="0" width="100%" height="100%"></rect><text class="title" dx="50%" dy="2.5em">UNIVERS</text><text class="title" dx="50%" dy="3.5em">DES</text><text class="title" dx="50%" dy="4.5em">ENIGMES</text>
+                        </mask>
+                    </defs>
+                    <rect id="base" x="0" y="0" width="100%" height="100%"></rect>
+                </svg>
+                <div class="body">
+                    <p style="color:black; font-weight: bold;">Rejoins ce puzzle dimensionnel sans fin et fortifie tes synapses. Attention: de nombreuse personnes y ont laisser leur cerveau et temporalité. </p>
+                </div>
+            </figcaption><a href="{{ path('enigme_multiverse') }}"></a>
+        </figure>
+    </div>
+    <div class="item">
+        <figure>
+            <div class="media" style="background-image:url('{{asset('images/multiverse/memory.jpg')}}')"></div>
+            <figcaption>
+            <svg viewBox="0 0 200 200" version="1.1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <mask id="mask2" x="0" y="0" width="100%" height="100%">
+                            <rect id="alpha" x="0" y="0" width="100%" height="100%"></rect><text class="title" dx="50%" dy="2.5em">UNIVERS</text><text class="title" dx="50%" dy="3.5em">DE LA</text><text class="title" dx="50%" dy="4.5em">MEMOIRE</text>
+                        </mask>
+                    </defs>
+                    <rect id="base2" x="0" y="0" width="100%" height="100%"></rect>
+                </svg>
+                <div class="body">
+                    <p style="color:black; font-weight: bold;">Une dimension ou on n'oublie rien. Le proverbe des habitants est: "Ce qui a été dur à supporter est doux à se rappeler."</p>
+                </div>
+            </figcaption><a href="{{ path('memoire_multiverse') }}"></a>
+        </figure>
+    </div>
+</div>
+
+{% elseif app.request.requestUri == "/choice?match=help" %}
+
+ {% include 'multiverse/fragment/button_back.html.twig' %}   
+ <h1>Univers lié à l'entraide</h1>
+    <hr style="width:90%">
+
+    <div class="cards">
+
+    <div class="offCard">
+     <a href="{{ path('cours_multiverse') }}" class="btnC a">Visiter</a>
+    <div class="card3">
+        <div class="card__image-holder">
+        <img class="card__image" src="https://source.unsplash.com/300x225/?lesson" alt="empathie" />
+        </div>
+        <div class="card-title">
+        <a href="#" class="toggle-info btn">
+            <span class="left"></span>
+            <span class="right"></span>
+        </a>
+        <h2 style="color:black;">
+            Cours
+            <small style="color:black;">Enseignement</small>
+        </h2>
+        </div>
+        <div class="card-flap flap1">
+        <div style="color:black;" class="card-description">
+            Un coin du multivers ou tu peux apprendre ou être enseigner:
+           "Tendre la main à celui qui est dans le trou. Ce n'est pas sauter dedans pour l'aider à remonter".
+        </div>
+        <div class="card-flap flap2">
+            <div class="card-actions">
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
+
+    <div class="offCard">
+     <a href="{{ path('dons_multiverse') }}" class="btnC a">Visiter</a>
+    <div class="card3">
+        <div class="card__image-holder">
+        <img class="card__image" src="https://source.unsplash.com/300x225/?gift" alt="hedoniste" />
+        </div>
+        <div class="card-title">
+        <a href="#" class="toggle-info btn">
+            <span class="left"></span>
+            <span class="right"></span>
+        </a>
+        <h2 style="color:black;">
+            Dons
+            <small style="color:black;">Le plaisir de donner</small>
+        </h2>
+        </div>
+        <div class="card-flap flap1">
+        <div style="color:black;" class="card-description">
+            L'hédonisme comporte une partie bien souvent oubliée. L'aspect positif de recherche du plaisir éclipse la plupart du temps son corrélat: l'évitement du déplaisir.
+        </div>
+        <div class="card-flap flap2">
+            <div class="card-actions">
+            <a href="#" class="btn">Visiter</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+  <div class="offCard">
+    <a href="{{ path('conaissances_multiverse') }}" class="btnC a">Visiter</a>
+    <div class="card3">
+        <div class="card__image-holder">
+        <img class="card__image" src="https://source.unsplash.com/300x225/?together" alt="entraide" />
+        </div>
+        <div class="card-title">
+        <a href="#" class="toggle-info btn">
+            <span class="left"></span>
+            <span class="right"></span>
+        </a>
+        <h2 style="color:black;">
+            Conaissances
+            <small style="color:black;">Ensemble, on va plus loin</small>
+        </h2>
+        </div>
+        <div class="card-flap flap1">
+        <div style="color:black;" class="card-description">
+            Un univers ou tout le monde souhaite se monter vers le haut et partager en équipe.
+        </div>
+        <div class="card-flap flap2">
+            <div class="card-actions">
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    
+    </div>
+
+
+{% elseif app.request.requestUri == "/choice?match=pleasure" %}
+    
+  {% include 'multiverse/fragment/button_back.html.twig' %}
+  <h1>Univers lié à l'amusement</h1>
+
+  <div class="slider">
+    <div class="items-group">
+      <div class="item">
+        <div class="block">
+          <span class="circleLight"></span>
+          <div class="text">
+            <h2>Art</h2>
+            <p style="font-weight: bold;">Vos créations !</p>
+            <div style="display:flex; justify-content:center;">
+              <a  href="{{ path('art_multiverse') }}" class="btnFun">Visiter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="block">
+          <span class="circleLight"></span>
+          <div class="text">
+            <h2>Fête</h2>
+            <p>Viens rejoindre la plus grande fête galactique</p>
+            <div style="display:flex; justify-content:center;">
+            <a  href="#" class="btnFun">Visiter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="block">
+          <span class="circleLight"></span>
+          <div class="text">
+            <h2>Histoire</h2>
+            <p>Un univers remplie d'anectodes ahurissantes</p>
+            <div style="display:flex; justify-content:center;">
+            <a  href="#" class="btnFun">Visiter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="block">
+          <span class="circleLight"></span>
+          <div class="text">
+            <h2>Jeux</h2>
+            <p>Tout ce qui faut pour colmpléter votre kit de divertissement Pascalien</p>
+            <div style="display:flex; justify-content:center;">
+            <a  href="{{ path('jeux_multiverse') }}" class="btnFun">Visiter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navigations">
+      <ul class="dots"></ul>
+    </div>
+  </div>
+
+{% endif %}
+        
+
+<script src="{{ asset('js/choice.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+
+<title>{% block title %}Multivers_Jeux3{% endblock %}</title>
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/univers/game3.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+<div id="world" />
+<div id="gameoverInstructions">
+  Partie terminée
+</div>
+<div id="dist">
+    <div class="label">distance</div>
+    <div id="distValue">000</div>
+</div>
+
+<div id="instructions">Clique pour sauter<span class="lightInstructions"> — Attrapes les carottes / ésquives les hérissons</span></div>
+
+
+<div id="credits">
+  <p><a href="{{ path('jeuxvideo_multiverse') }}">Revenir à MetaVerse</a></p>
+</div>
+
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/r80/three.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/264161/OrbitControls.js'></script>
+<script src="{{ asset('js/universe/game3.js') }}"></script>
+{% endblock %}
+

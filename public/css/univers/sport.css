@@ -1,0 +1,506 @@
+/* Menu Sport */
+
+i {
+    opacity: 0;
+    font-size: 18px;
+    color: #fff;
+    will-change: transform;
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+h2 {
+    pointer-events: none;
+}
+
+.containerw {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.containerw .card {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    background-color: #fff;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+.containerw .card:before {
+    z-index: 99;
+    position: absolute;
+    top: -10px;
+    left: 32px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    background-color: #e6e5e1;
+}
+.containerw .card:after {
+    content: 34;
+    z-index: 99;
+    position: absolute;
+    bottom: -10px;
+    left: 32px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    background-color: #e6e5e1;
+}
+.containerw .card ul {
+    z-index: 99;
+    position: absolute;
+    left: 39px;
+    top: 5px;
+    list-style-type: none;
+}
+.containerw .card ul li {
+    width: 2px;
+    height: 2px;
+    border-radius: 2px;
+    margin: 6px 0;
+    background-color: #e6e5e1;
+}
+.containerw .card h2 {
+    z-index: 99;
+    position: absolute;
+    bottom: 0;
+    right: 130px;
+    font-size: 60px;
+    font-weight: 700;
+    color: #fff;
+}
+.containerw .card .fa-arrow-right {
+    z-index: 100;
+    position: absolute;
+    right: 75px;
+    bottom: 25px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.containerw .card p {
+    z-index: 99;
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    color: #333;
+    opacity: 0.7;
+    font-size: 12px;
+    letter-spacing: 1px;
+    writing-mode: vertical-lr;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.containerw .card .pic {
+    z-index: 100;
+    width: 400px;
+    height: 200px;
+    background-image: url(
+    https://evofitness.ch/wp-content/uploads/2019/01/Crossfit-EVO-Fitness-1200x675.jpg;
+   );
+    background-size: 100% 100%;
+    filter: grayscale(100%);
+}
+.containerw .card .social {
+    position: absolute;
+    left: 60px;
+    top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 180px;
+    height: 64px;
+    border-radius: 80px;
+}
+
+.containerw .card:hover i {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.containerw .card button {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 30px;
+    height: 30px;
+    background-color: #da4d1d;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    mix-blend-mode: hard-light;
+}
+.containerw .card button i {
+    font-size: 3rem;
+}
+.containerw .card:hover button {
+    transform: scale(16.5);
+}
+.containerw .card:hover p {
+    color: #fff;
+}
+.containerw .card:hover .pic {
+    filter: grayscale(0);
+}
+.containerw .card2 .pic {
+    background-image: url(
+        https://www.gannett-cdn.com/presto/2021/07/21/USAT/dfbd657c-1ef5-4dd9-b355-1619bdc2645f-GettyImages-924491214.jpg?crop=2120,1193,x0,y0&width=2120&height=1193&format=pjpg&auto=webp);
+}
+.containerw .card2 button {
+    background-color: #2b26c3;
+}
+.dr {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 100px;
+}
+
+/* Member Sport */
+
+
+.containerM {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-gap: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Baloo Paaji 2', cursive;
+  }
+  
+  .cardM {
+    background-color: #222831;
+    height: 37rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  
+  .card__name {
+    margin-top: 15px;
+    font-size: 1.5em;
+  }
+  
+  .card__image {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    border: 5px solid #272133;
+    margin-top: 20px;
+    box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+  }
+  
+  
+  .draw-border {
+    box-shadow: inset 0 0 0 4px #58cdd1;
+    color: #58afd1;
+    -webkit-transition: color 0.25s 0.0833333333s;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+  }
+  
+  .draw-border::before,
+  .draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0rem;
+    height: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .draw-border::before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+  }
+  
+  .draw-border::after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+  }
+  
+  .draw-border:hover {
+    color: #ffe593;
+  }
+  
+  .draw-border:hover::before,
+  .draw-border:hover::after {
+    border-color: #eb196e;
+    -webkit-transition: border-color 0s, width 0.25s, height 0.25s;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .draw-border:hover::before {
+    -webkit-transition-delay: 0s, 0s, 0.25s;
+    transition-delay: 0s, 0s, 0.25s;
+  }
+  
+  .draw-border:hover::after {
+    -webkit-transition-delay: 0s, 0.25s, 0s;
+    transition-delay: 0s, 0.25s, 0s;
+  }
+  
+  .btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem 'Roboto Slab', sans-serif;
+    padding: 0.75em 2em;
+    letter-spacing: 0.05rem;
+    margin: 1em;
+    width: 13rem;
+  }
+  
+  .btn:focus {
+    outline: 2px dotted #55d7dc;
+  }
+  
+  
+  .social-icons {
+    padding: 0;
+    list-style: none;
+    margin: 1em;
+  }
+  
+  .social-icons li {
+    display: inline-block;
+    margin: 0.15em;
+    position: relative;
+    font-size: 1em;
+  }
+  
+  .social-icons i {
+    color: #fff;
+    position: absolute;
+    top: 0.95em;
+    left: 0.96em;
+    transition: all 265ms ease-out;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+  }
+  
+  .social-icons a:before {
+    transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    content: " ";
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: block;
+    background: linear-gradient(45deg, #ff003c, #c648c8);
+    transition: all 265ms ease-out;
+  }
+  
+  .social-icons a:hover:before {
+    transform: scale(0);
+    transition: all 265ms ease-in;
+  }
+  
+  .social-icons a:hover i {
+    transform: scale(2.2);
+    -ms-transform: scale(2.2);
+    -webkit-transform: scale(2.2);
+    color: #ff003c;
+    background: -webkit-linear-gradient(45deg, #ff003c, #c648c8);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 265ms ease-in;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    font-size: 1.2em;
+  }
+
+  /* MEDIA QUERIES */
+
+  
+  @media screen and (max-width: 910px) {
+    .containerM {
+        display: grid;
+        grid-template-columns: 300px 300px ;
+        grid-gap: 50px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 200vh;
+        font-family: 'Baloo Paaji 2', cursive;
+      }
+    }
+
+    @media screen and (max-width: 650px) {
+        .containerM {
+            display: grid;
+            grid-template-columns: 300px;
+            grid-gap: 50px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300vh;
+            font-family: 'Baloo Paaji 2', cursive;
+          }
+        }
+
+/* Last Posts Sport */
+
+.date__box {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    border: 4px solid;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+.date__box .date__day {
+    font-size: 22px;
+}
+.blog-card {
+    padding: 30px;
+    position: relative;
+}
+.blog-card .date__box {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: 300ms ease-in-out;
+}
+.blog-card .blog-card__background, .blog-card .card__background--layer {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.blog-card .blog-card__background {
+    padding: 15px;
+    background: white;
+}
+.blog-card .card__background--wrapper {
+    height: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+    position: relative;
+    overflow: hidden;
+}
+.blog-card .card__background--main {
+    height: 100%;
+    position: relative;
+    transition: 300ms ease-in-out;
+    background-repeat: no-repeat;
+    width: 200vh;
+    background-size: cover;
+}
+.blog-card .card__background--layer {
+    z-index: 0;
+    opacity: 0;
+    background: rgba(51, 51, 51, 0.9);
+    transition: 300ms ease-in-out;
+}
+.blog-card .blog-card__head {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blog-card .blog-card__info {
+    z-index: 10;
+    background: white;
+    padding: 20px 15px;
+}
+.blog-card .blog-card__info h5 {
+    transition: 300ms ease-in-out;
+}
+.blog-card:hover .date__box {
+    opacity: 1;
+    transform: scale(1);
+}
+.blog-card:hover .card__background--main {
+    transform: scale(1.2) rotate(5deg);
+}
+.blog-card:hover .card__background--layer {
+    opacity: 1;
+}
+.blog-card:hover .blog-card__info h5 {
+    color: #ffb535 !important;
+}
+a.icon-link {
+    color: #363738;
+    transition: 200ms ease-in-out;
+}
+a.icon-link i {
+    color: #ffb535;
+}
+a.icon-link:hover {
+    color: #ffb535 ;
+    text-decoration: none;
+}
+.btn2 {
+    background: rgb(216, 212, 212);
+    color: #363738;
+    font-weight: bold;
+    outline: none;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border-radius: 0;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    padding: 0;
+    border: none;
+}
+.btn2:focus {
+    box-shadow: none;
+}
+.btn2:hover {
+    background: #ffb535;
+    color: #fff;
+}
+.btn2.btn--with-icon {
+    padding: 5px;
+}
+.btn2.btn--with-icon i {
+    padding: 0px 30px 0px 15px;
+    margin-right: 10px;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: bottom;
+    color: white;
+    background: #ffb535;
+    clip-path: polygon(0 0, 70% 0, 100% 100%, 0% 100%);
+}
+.btn2.btn--only-icon {
+    width: 50px;
+}

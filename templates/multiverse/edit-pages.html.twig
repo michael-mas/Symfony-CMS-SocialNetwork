@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle publication{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+{% endblock %}
+
+{% block body %}
+
+ <navi>
+   <a title="Créer univers" href="{{ path('page_new') }}#first"><i class="far fa-file-alt"></i></a>
+   <a title="Créer categorie" href="{{ path('page_new') }}#second"><i class="fas fa-newspaper"></i></a>
+   <a title="Voir pages" href="{{ path('pages.list.alls') }}"><i class="fas fa-hat-wizard"></i></a>
+   <a title="Accueil" href="{{ path('page_new') }}"><i class="fas fa-home"></i></a>
+ </navi>
+  
+<div class= 'containerY'>
+   <h1>Bienvenue au créateur d'univers</h1>
+   
+</div>
+
+<div class= 'containerZ'> 
+
+  <section id= 'first'>
+
+    <div class="title-form">
+    <h1>Formulaire d'édition de page</h1>
+    <hr style="width:100%">
+    </div>
+
+    <div class="post-new-content">
+
+    <p style="text-align:center; font-weight:bold;">
+    {% for success in app.flashes('success') %}
+    {{ success }}
+    {% endfor %}
+   </p>
+
+    <div class="post-form-bottom">
+        {{ form_start(form) }}
+
+            {{ form_widget(form, {'attr': {'class': 'form'}}) }}
+            <div id="image-holder"></div>
+
+            <button type="submit" class="btn btn-primary btnC">Modifier la page</button>
+
+        {{ form_end(form) }}
+    </div>
+    </div>
+  </section>
+</div>
+
+<div style="height:16%; margin-top:10%"></div>
+
+        {{ parent() }}
+
+        <script>
+            $(document).ready(function() {
+                $("#page_form_images").on('change', function() {
+                    //Get count of selected files
+                    var countFiles = $(this)[0].files.length;
+                    var imgPath = $(this)[0].value;
+                    var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                    var image_holder = $("#image-holder");
+                    image_holder.empty();
+                    if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+                        if (typeof(FileReader) != "undefined") {
+                            //loop for each file selected for uploaded.
+                            for (var i = 0; i < countFiles; i++)
+                            {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    $("<img />", {
+                                        "src": e.target.result,
+                                        "class": "thumb-image"
+                                    }).appendTo(image_holder);
+                                }
+                                image_holder.show();
+                                reader.readAsDataURL($(this)[0].files[i]);
+                            }
+                        } else {
+                            alert("This browser does not support FileReader.");
+                        }
+                    } else {
+                        alert("Pls select only images");
+                    }
+                });
+            });
+
+            document.getElementById('page_form_images').addEventListener('click', () => {
+            document.querySelector(['[for=page_form_images]']).innerHTML = '⟲'
+            });
+        </script>
+  <script src="https://kit.fontawesome.com/d5fba335cd.js" crossorigin="anonymous"></script>
+{% endblock %}
